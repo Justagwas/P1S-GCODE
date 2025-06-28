@@ -2,8 +2,8 @@
 
 **Download:**
 
-* [Modified Start G-code]()
-* [Modified End G-code]()
+* [Modified Start G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/start%20G-code)
+* [Modified End G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/end%20G-code)
 
 *These scripts have been tested on a Bambu Lab P1S equipped with AMS and perform as intended.*
 

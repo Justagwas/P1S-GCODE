@@ -1,0 +1,178 @@
+;===========================================================
+;===== End G-code for Bambu Lab P1S WITH AMS ===============
+;===== Author: Justagwas ===================================
+;===== Date: 2025-06-28 ====================================
+;===========================================================
+
+;===== Ensure motion buffer is clear =======================
+M400
+
+;===== Reset motor currents and acceleration ===============
+M17 X1.2 Y1.2 Z0.75
+M204 S10000
+M1002 set_gcode_claim_speed_level :5
+
+;===== Initial retraction and purge ========================
+G92 E0
+G1 E-0.5 F300              ; Small retract to relieve pressure
+
+;===== Spiral lift and retreat =============================
+G91                         ; Relative positioning
+G1 Z1 X5 Y5 F3000
+G1 X-10 Y5 F3000
+G1 X5 Y-10 F3000
+G1 Z1 X5 Y5 F3000
+G90                         ; Back to absolute positioning
+
+;===== Move to safe park position ==========================
+G1 X65 Y265 F12000
+M400 S3
+
+;===== Fan to max ===========================================
+M106 P1 S255
+G92 E0
+G1 E2 F100
+G4 S6
+
+;===== Purge ================================================
+G92 E0
+G1 E3 F200
+M400
+M104 S200
+G92 E0
+G1 E-2 F200
+M400
+
+;===== Lower purge temperature ==============================
+M104 S180
+G92 E0
+G1 E10 F100 
+M400
+
+;===== Wiping movements =====================================
+G1 E-1 F200
+G1 X70 F9000
+G1 X95 F12000
+G1 X70 F9000
+G1 X165 F12000
+G1 X70 F9000
+G1 X95 F12000
+G1 X70 F9000
+G1 E-1 F200
+G1 X70 F9000
+G1 X95 F12000
+G1 X70 F9000
+G1 X70 F9000
+G1 X95 F12000
+G1 X70 F9000
+G1 X70 F9000
+G1 X95 F3000
+G1 X70 F9000
+M400
+G4 S2
+
+;===== Lower fan ============================================
+G1 X88 F9000
+G1 X89 F500
+M106 P1 S150
+G4 S2
+
+;===== Cool to <=180 before AMS =============================
+G1 E-1 F200
+M109 S180
+G1 X70 F9000
+G1 X95 F12000
+G1 X70 F9000
+G1 X70 F9000
+G1 X95 F12000
+G1 X70 F9000
+G1 X140 F9000
+
+;===== AMS unload sequence with push/retract ===============
+M109 S175
+M620 S255                   ; Mark AMS
+G1 E-1 F200                 ; Additional 1mm retract before cut
+G1 X20 Y50 F12000           ; Move to cut area
+G1 Y-3                      ; Lower slightly
+T255                        ; Tool select for cut
+G1 E2 F200                  ; Push 2mm to clear nozzle inlet
+G1 X65 F12000
+G1 Y265
+M621 S255                   ; Retract filament fully into AMS
+
+;===== Cool nozzle down fully ==============================
+M104 S0
+
+;===== Wipe nozzle with ABL off ============================
+M1002 gcode_claim_action :14
+G29.2 S0                    ; Disable ABL
+G1 X65 Y265 F8000
+G1 X100 F5000
+G1 X70 F15000
+G1 X100 F5000
+G1 X70 F15000
+G1 X100 F5000
+G1 X70 F15000
+G1 X100 F5000
+M400
+
+;===== Re-enable ABL and vibration suppression =============
+G29.2 S1
+M975 S1
+M1002 gcode_claim_action :0
+
+;===== Stop time-lapse recording safely ====================
+M622.1 S1
+M1002 judge_flag timelapse_record_flag
+M622 J1
+M400
+M991 S0 P-1
+M400 S3
+M623
+M400
+
+;===== Lower heatbed safely ================================
+M17 S
+M17 Z0.4
+
+{if (max_layer_z + 100.0) < 250}
+G1 Z{max_layer_z + 100.0} F600
+G1 Z{max_layer_z + 98.0}
+{else}
+G1 Z249 F600
+G1 Z247
+{endif}
+
+M400 P100
+G90
+G1 X128 Y250 F3600
+
+;===== Reset motion settings ===============================
+M220 S100
+M201.2 K1.0
+M73.2 R1.0
+M1002 set_gcode_claim_speed_level :0
+
+;===== Fast cooldown (all fans high) =======================
+M106 P1 S200
+M106 P2 S200
+M106 P3 S200
+M400 S30
+
+;===== Second cooldown (medium) ============================
+M106 P1 S100
+M106 P2 S100
+M106 P3 S125
+M400 S100
+
+;===== Turn off all fans ===================================
+M106 P1 S0
+M106 P2 S0
+M106 P3 S0
+M710 S0
+
+;===== Lower motor currents ================================
+M17 X0.8 Y0.8 Z0.5
+
+;===== Final state =========================================
+M1002 gcode_claim_action :0

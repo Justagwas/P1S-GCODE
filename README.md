@@ -16,10 +16,10 @@ These G-code scripts serve as better replacements for the default start and end 
 
 ## Download
 
-| Routine        | Description                         | Link                                                                 |
-|----------------|-------------------------------------|----------------------------------------------------------------------|
-| Start G-code   | Streamlined startup sequence        | [Copy the Script](https://github.com/Justagwas/P1S-GCODE/blob/main/start%20G-code) |
-| End G-code     | Controlled shutdown and cooldown    | [Copy the Script](https://github.com/Justagwas/P1S-GCODE/blob/main/end%20G-code)   |
+| Routine        | Description                         | Link                                                                 | RAW Text Link                                |
+|----------------|-------------------------------------|----------------------------------------------------------------------|----------------------------------------------|
+| Start G-code   | Streamlined startup sequence        | [Copy the Script](https://github.com/Justagwas/P1S-GCODE/blob/main/start%20G-code) | [RAW Text File](https://github.com/Justagwas/P1S-GCODE/raw/refs/heads/main/start%20G-code) |
+| End G-code     | Controlled shutdown and cooldown    | [Copy the Script](https://github.com/Justagwas/P1S-GCODE/blob/main/end%20G-code)   | [RAW Text File](https://github.com/Justagwas/P1S-GCODE/raw/refs/heads/main/end%20G-code)   |
 
 > [!TIP]
 > Before replacing the default G-code scripts in Bambu Studio, **create a backup** of your existing start and end sequences.  

@@ -1,89 +1,105 @@
-# Bambu Lab P1S - Enhanced G-code Start & End Scripts
-## Verified on P1S with AMS
+# Bambu Lab P1S - Enhanced Start & End G-code
+### Verified on P1S with AMS
+
+### Recommended for use with [Orca Slicer](https://github.com/SoftFever/OrcaSlicer).
+
+*Works with ANY.
 
 ---
 
 ## Overview
 
-These G-code scripts serve as better replacements for the default start and end routines found in Bambu Studio. The scripts aim to:
+These G-Code scripts replace the default Start and End routines in your Slicer. 
 
-1. Optimize print setup and shutdown sequences.
-2. Maintain nozzle and bed cleanliness throughout print cycles.
-3. Improve the speed and reliability of AMS filament handling.
-4. Ensure mesh bed integrity through verification and fallback leveling.
+They are designed to:
+
+- Make print setup and shutdown faster.
+- Keep the nozzle and bed clean between prints.
+- Improve AMS filament handling reliability.
+- Verify mesh bed integrity and trigger leveling if needed.
+- Work straight out of the box (Just copy and paste!) without extra setup.
 
 ---
 
 ## Download
 
-| Routine        | Description                         | Link                                                                 | RAW Text Link                                |
-|----------------|-------------------------------------|----------------------------------------------------------------------|----------------------------------------------|
-| Start G-code   | Streamlined startup sequence        | [Copy the Script](https://github.com/Justagwas/P1S-GCODE/blob/main/start%20G-code) | [RAW Text File](https://github.com/Justagwas/P1S-GCODE/raw/refs/heads/main/start%20G-code) |
-| End G-code     | Controlled shutdown and cooldown    | [Copy the Script](https://github.com/Justagwas/P1S-GCODE/blob/main/end%20G-code)   | [RAW Text File](https://github.com/Justagwas/P1S-GCODE/raw/refs/heads/main/end%20G-code)   |
+| G-Code Type      | Description                  | Script Link                                                                 | RAW Link                                                                 |
+|--------------|------------------------------|-----------------------------------------------------------------------------|--------------------------------------------------------------------------|
+| Start G-Code | Optimized startup sequence   | [View Script](https://github.com/Justagwas/P1S-GCODE/blob/main/start%20G-code) | [Raw File](https://github.com/Justagwas/P1S-GCODE/raw/refs/heads/main/start%20G-code) |
+| End G-Code   | Controlled shutdown/cooldown | [View Script](https://github.com/Justagwas/P1S-GCODE/blob/main/end%20G-code)   | [Raw File](https://github.com/Justagwas/P1S-GCODE/raw/refs/heads/main/end%20G-code)   |
 
-> [!TIP]
-> Before replacing the default G-code scripts in Bambu Studio, **create a backup** of your existing start and end sequences.  
-> You can do this by copying them into a plain text file or saving a preset within the Studio interface.
+> [!TIP]  
+> Back up your current start and end G-code before replacing them in your Slicer.
 
 ---
 
 ## Script Summary
 
 ### Start G-code
-
-1. **System reset and initial fan setup** using `M710`, `M17`, and related configuration commands (`M220`, `M221`).
-2. **Concurrent heating and motion prep**, reducing pre-print latency.
-3. **Clean homing** via `G28`, ensuring predictable origin alignment.
-4. **AMS initialization and filament verification** using `M620.*`, `M621.*`.
-5. **Purging and wiping** at full extrusion temperature to prevent initial layer defects.
-6. **Bed mesh validation** using `G29.1`. If significant deviation is detected, the system triggers a full mesh leveling routine.
+- Resets system state, motor currents, and fan defaults.  
+- Enables runout detection and resonance compensation.
+- Heats bed and nozzle in parallel while preparing motion.
+- Homes all axes.
+- Initializes AMS, reloads, and verifies filament.
+- Purges and wipes at extrusion temperature to ensure a clean nozzle.
+- Cools slightly, then validates mesh bed, if selected, and enables compensation.
+- Draws a purge line at print temperature before starting the job.
 
 ### End G-code
-
-1. **Spiral Z-axis retraction** to remove the nozzle cleanly from the print without dragging.
-2. **Post-print purge and wipe**, preventing residue buildup during cool-down.
-3. **Fan ramp-down sequence**, mitigating the risk of heat creep into the cold zone.
-4. **Chamber ventilation sequence** lasting approximately three minutes.
-5. **Motor current reduction and toolhead parking** to protect electronics and position safely for the next print.
-
----
-
-## Key Advantages
-
-- **Reduced time-to-print** through efficient thermal and mechanical initialization.
-- **Improved part and print quality** due to reduced oozing and controlled nozzle behavior.
-- **Enhanced reliability of AMS loading/unloading**, minimizing jams and retries.
-- **Autonomous mesh verification**, avoiding unnecessary re-leveling and false starts.
+- Clears motion buffer and resets motor/acceleration settings.
+- Performs a small retract and spiral lift to safely move away from the print.
+- Parks at purge area, extrudes/purges, and runs a wipe routine to leave nozzle clean.
+- Gradually cools nozzle to prevent ooze and stringing, then unloads filament back into AMS.
+- Cools down and performs a final nozzle wipe with ABL temporarily disabled.
+- Re‑enables ABL and resonance suppression, and safely stops timelapse recording if active.
+- Raises Z and moves toolhead to a rear park position.
+- Runs staged fan cooldown (high → medium → off) to manage chamber and hotend ventilation and temps.
+- Reduces motor currents for idle state and clears action flags.
 
 ---
 
-## Integration & Testing Procedure
+## Benefits
 
-1. Open **Bambu Studio** or other, navigate to **Machine G-code**.
-2. Replace the **Start** and **End G-code** sections with the contents of the corresponding script files.
-3. Save the configuration and run a calibration or small test print.
-4. Observe the AMS behavior, wipe pattern, bed leveling response, and end-of-print motions.
-5. Adjust only if necessary, particularly Z-offset values or purge volumes for specialty materials.
+- Faster time-to-print through efficient prep.
+- Cleaner first layers and reduced oozing.
+- More reliable AMS loading/unloading.
+- Only the necessities and safeguards!
 
 ---
 
-## Technical Considerations
+## Integration & Testing
 
-> [!WARNING]
-> Do **not** increase the Z-offset beyond the default value without careful testing. Excessive positive offsets may prevent proper adhesion; excessive negative values may damage the bed surface or nozzle.
+1. Open **Your Slicer** -> **Machine G-Code**.
+2. Replace the **Start G-Code** and **End G-code** sections with these scripts.
+3. Save and run a calibration or small test print.
+4. Observe AMS behavior, wipe pattern, bed leveling, printing, and shutdown.
+5. Adjust only if needed.
 
-> [!WARNING]
-> Commands such as `M17` (motor enable) and `M220`/`M221` (multipliers) directly affect motion behavior. Incorrect usage may result in stepper instability or clogs.
+---
 
-- These scripts are tailored to the **P1S with AMS**, though they should operate without issue on the **P1S** and **X1C** without AMS, provided AMS-specific calls are automatically uncalled.
+## Technical Notes
+
+> [!WARNING]  
+> Adjust Z-offset carefully. Too high = poor adhesion. Too low = risk of nozzle/bed damage.
+
+> [!WARNING]  
+> Commands like `M17`, `M220`, and `M221` directly affect motion. Incorrect values may cause instability or clogs.
+
+- Scripts are tailored for **P1S with AMS**, but also work on **P1S** and **X1C** without AMS (AMS-specific calls are skipped automatically).
 
 ---
 
 ## Contributing
 
-Contributions are welcome. If you have refinements, compatibility notes, or verified performance changes:
-
+Contributions are welcome:
 1. Fork the repository.
-2. Modify the relevant script(s).
-3. Submit a pull request with clear documentation of the changes.
-4. Open an issue if you encounter reproducible problems or firmware-specific quirks.
+2. Modify the script(s).
+3. Submit a pull request with clear documentation.
+4. Open an issue for reproducible problems or firmware quirks.
+
+---
+
+## Contact
+
+For questions or feedback, reach out at:  
+[contact@justagwas.com](mailto:contact@justagwas.com)

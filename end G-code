@@ -1,64 +1,64 @@
 ;===========================================================
 ;===== End G-code for Bambu Lab P1S WITH AMS ===============
 ;===== Author: Justagwas ===================================
-;===== Date: 2025-08-14 ====================================
+;===== Date: 2025-10-03 ====================================
 ;===========================================================
 
 ;===== Ensure motion buffer is clear =======================
-M400
+M400                          ; Wait for all moves to finish
 
 ;===== Reset motor currents and acceleration ===============
-M17 X1.2 Y1.2 Z0.75
-M204 S10000
-M1002 set_gcode_claim_speed_level :5
+M17 X1.2 Y1.2 Z0.75           ; Restore default motor currents
+M204 S10000                   ; Reset acceleration
+M1002 set_gcode_claim_speed_level :5 ; Internal speed mode reset
 
 ;===== Initial retraction and purge ========================
-G92 E0
-G1 E-0.5 F300              ; Small retract to relieve pressure
+G92 E0                        ; Zero extruder position
+G1 E-0.5 F300                 ; Retract 0.5mm to relieve pressure
 
 ;===== Spiral lift and retreat =============================
-G91                         ; Relative positioning
-G1 Z1 X5 Y5 F3000
-G1 X-10 Y5 F3000
-G1 X5 Y-10 F3000
-G1 Z2 X5 Y5 F3000
-G90                         ; Back to absolute positioning
+G91                           ; Switch to relative positioning
+G1 Z1 X5 Y5 F3000             ; Lift Z +1mm and move
+G1 X-10 Y5 F3000              
+G1 X5 Y-10 F3000              
+G1 Z2 X5 Y5 F3000             
+G90                           ; Back to absolute positioning
 
 ;===== Move to safe park position ==========================
-G1 X65 Y265 F12000
-M400 S3
+G1 X65 Y265 F12000            ; Move head to purge/park area
+M400 S3                       ; Wait for moves to complete
 
 ;===== Fan to max ===========================================
-M106 P1 S255
-G92 E0
-G1 E2 F100
-G4 S6
+M106 P1 S255                  ; Part cooling fan 100%
+G92 E0                        ; Zero extruder
+G1 E2 F100                    ; Extrude 2mm slowly
+G4 S6                         ; Dwell 6 seconds
 
 ;===== Purge ================================================
-G92 E0
-G1 E3 F200
-M400
-M104 S200
-G92 E0
-G1 E-2 F200
-M400
+G92 E0                        ; Zero extruder
+G1 E3 F200                    ; Extrude 3mm at 200mm/min
+M400                          ; Wait for completion
+M104 S200                     ; Cool nozzle to 200C (non-blocking)
+G92 E0                        ; Zero extruder
+G1 E-2 F200                   ; Retract 2mm
+M400                          ; Wait for completion
 
 ;===== Lower purge temperature ==============================
-M104 S180
-G92 E0
-G1 E10 F100 
-M400
+M104 S180                     ; Cool nozzle to 180C (non-blocking)
+G92 E0                        ; Zero extruder
+G1 E10 F100                   ; Extrude 10mm slowly (final ooze)
+M400                          ; Wait for completion
 
 ;===== Wiping movements =====================================
-G1 E-1 F200
-G1 X70 F9000
+G1 E-1 F200                   ; Retract 1mm
+G1 X70 F9000                  ; Wipe moves back and forth
 G1 X95 F12000
 G1 X70 F9000
 G1 X165 F12000
 G1 X70 F9000
 G1 X95 F12000
 G1 X70 F9000
-G1 E-1 F200
+G1 E-1 F200                   ; Retract again
 G1 X70 F9000
 G1 X95 F12000
 G1 X70 F9000
@@ -66,21 +66,21 @@ G1 X70 F9000
 G1 X95 F12000
 G1 X70 F9000
 G1 X70 F9000
-G1 X95 F3000
-G1 X70 F9000
-M400
-G4 S2
+G1 X95 F3000                  ; Slow wipe
+G1 X70 F9000                  ; Fast wipe back
+M400                          ; Wait for completion
+G4 S2                         ; Pause 2 seconds
 
 ;===== Lower fan ============================================
-G1 X88 F9000
-G1 X89 F500
-M106 P1 S150
-G4 S2
+G1 X88 F9000                  ; Move near wipe area
+G1 X89 F500                   ; Slow move for precision
+M106 P1 S150                  ; Lower part fan to ~59%
+G4 S2                         ; Pause 2 seconds
 
 ;===== Cool to <=180 before AMS =============================
-G1 E-1 F200
-M109 S180
-G1 X70 F9000
+G1 E-1 F200                   ; Retract 1mm
+M109 S180                     ; Wait until nozzle reaches 180C
+G1 X70 F9000                  ; Wipe moves during cooldown
 G1 X95 F12000
 G1 X70 F9000
 G1 X70 F9000
@@ -89,25 +89,25 @@ G1 X70 F9000
 G1 X140 F9000
 
 ;===== AMS unload sequence with push/retract ===============
-M109 S175
-M620 S255                   ; Mark AMS
-G1 E-1 F200                 ; Additional 1mm retract before cut
-G1 X20 Y50 F12000           ; Move to cut area
-G1 Y-3                      ; Lower slightly
-T255                        ; Tool select for cut
-G1 E2 F200                  ; Push 2mm to clear nozzle inlet
-G1 X65 F12000
-G1 Y265
-M621 S255                   ; Retract filament fully into AMS
+M109 S175                     ; Wait until nozzle cools to 175C
+M620 S255                     ; AMS: mark unload sequence
+G1 E-1 F200                   ; Retract 1mm before cut
+G1 X20 Y50 F12000             ; Move to cut area
+G1 Y-3                        ; Lower slightly
+T255                          ; Select tool 255 (cut tool)
+G1 E2 F200                    ; Push 2mm to clear inlet
+G1 X65 F12000                 ; Move away
+G1 Y265                       ; Move to AMS retract position
+M621 S255                     ; AMS: retract filament fully
 
 ;===== Cool nozzle/bed down fully ==========================
-M104 S0
-M140 S0
+M104 S0                       ; Turn off nozzle heater
+M140 S0                       ; Turn off bed heater
 
 ;===== Wipe nozzle with ABL off ============================
-M1002 gcode_claim_action :14
-G29.2 S0                    ; Disable ABL
-G1 X65 Y265 F8000
+M1002 gcode_claim_action :14  ; Declare wipe action
+G29.2 S0                      ; Disable auto bed leveling
+G1 X65 Y265 F8000             ; Wipe pattern
 G1 X100 F5000
 G1 X70 F15000
 G1 X100 F5000
@@ -115,65 +115,66 @@ G1 X70 F15000
 G1 X100 F5000
 G1 X70 F15000
 G1 X100 F5000
-M400
+M400                          ; Wait for completion
 
 ;===== Re-enable ABL and vibration suppression =============
-G29.2 S1
-M975 S1
-M1002 gcode_claim_action :0
+G29.2 S1                      ; Re-enable ABL
+M975 S1                       ; Enable resonance compensation
+M1002 gcode_claim_action :0   ; Clear action state
 
 ;===== Stop time-lapse recording safely ====================
-M622.1 S1
-M1002 judge_flag timelapse_record_flag
-M622 J1
-M400
-M991 S0 P-1
-M400 S3
-M623
-M400
+M622.1 S1                     ; End timelapse block
+M1002 judge_flag timelapse_record_flag ; Check if timelapse enabled
+M622 J1                       ; If true, then:
+M400                          ; Wait for moves
+M991 S0 P-1                   ; Stop timelapse recording
+M400 S3                       ; Wait
+M623                          ; End conditional
+M400                          ; Wait
 
 ;===== Lower heatbed safely ================================
-M17 S
-M17 Z0.4
+M17 S                         ; Reset motors
+M17 Z0.4                      ; Lower Z motor current
 
 {if (max_layer_z + 100.0) < 250}
-G1 Z{max_layer_z + 100.0} F600
-G1 Z{max_layer_z + 98.0}
+G1 Z{max_layer_z + 100.0} F600; Raise Z 100mm if safe
+G1 Z{max_layer_z + 98.0}      ; Lower slightly
 {else}
-G1 Z249 F600
-G1 Z247
+G1 Z249 F600                  ; Otherwise raise near max
+G1 Z247                       ; Lower slightly
 {endif}
 
-M400 P100
-G90
-G1 X128 Y250 F3600
+M400 P100                     ; Wait
+G90                           ; Absolute positioning
+G1 X128 Y250 F3600            ; Move head to rear center
 
 ;===== Reset motion settings ===============================
-M220 S100
-M201.2 K1.0
-M73.2 R1.0
-M1002 set_gcode_claim_speed_level :0
+M220 S100                     ; Reset feedrate to 100%
+M201.2 K1.0                   ; Reset tuning
+M73.2 R1.0                    ; Reset print time calc
+M1002 set_gcode_claim_speed_level :0 ; Clear speed claim
 
 ;===== Fast cooldown (all fans high) =======================
-M106 P1 S200
-M106 P2 S200
-M106 P3 S200
-M400 S30
+M106 P1 S200                  ; Part fan ~78%
+M106 P2 S200                  ; Aux fan ~78%
+M106 P3 S200                  ; Chamber fan ~78%
+M400 S30                      ; Run for 30s
 
 ;===== Second cooldown (medium) ============================
-M106 P1 S100
-M106 P2 S100
-M106 P3 S125
-M400 S100
+M106 P1 S100                  ; Part fan ~39%
+M106 P2 S100                  ; Aux fan ~39%
+M106 P3 S125                  ; Chamber fan ~49%
+M400 S100                     ; Run for 100s
 
 ;===== Turn off all fans ===================================
-M106 P1 S0
-M106 P2 S0
-M106 P3 S0
-M710 S0
+M106 P1 S0                    ; Part fan off
+M106 P2 S0                    ; Aux fan off
+M106 P3 S0                    ; Chamber fan off
+M710 S0                       ; MC board fan off
 
 ;===== Lower motor currents ================================
-M17 X0.8 Y0.8 Z0.5
+M17 X0.8 Y0.8 Z0.5            ; Reduce holding current for idle
 
 ;===== Final state =========================================
-M1002 gcode_claim_action :0
+M1002 gcode_claim_action :0   ; Clear any action state
+; END

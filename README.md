@@ -1,5 +1,5 @@
 # Bambu Lab P1S - Enhanced Start & End G-code
-### Verified on P1S with AMS
+### Verified on P1S with AMS - Last Tested on 2025/10/25
 
 ### Recommended for use with [Orca Slicer](https://github.com/SoftFever/OrcaSlicer).
 

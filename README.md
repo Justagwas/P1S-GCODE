@@ -7,6 +7,18 @@
 
 ---
 
+## Download / Copy
+
+| G-Code Type      | Description                  | Script Link                                                                 | RAW Link                                                                 |
+|--------------|------------------------------|-----------------------------------------------------------------------------|--------------------------------------------------------------------------|
+| Start G-Code | Optimized startup sequence   | [View Script](https://github.com/Justagwas/P1S-GCODE/blob/main/start%20G-code) | [Raw File](https://github.com/Justagwas/P1S-GCODE/raw/refs/heads/main/start%20G-code) |
+| End G-Code   | Controlled shutdown/cooldown | [View Script](https://github.com/Justagwas/P1S-GCODE/blob/main/end%20G-code)   | [Raw File](https://github.com/Justagwas/P1S-GCODE/raw/refs/heads/main/end%20G-code)   |
+
+> [!TIP]  
+> Back up your current start and end G-code before replacing them in your Slicer.
+
+---
+
 ## Overview
 
 These G-Code scripts replace the default Start and End routines in your Slicer. 
@@ -18,18 +30,6 @@ They are designed to:
 - Improve AMS filament handling reliability.
 - Verify mesh bed integrity and trigger leveling if needed.
 - Work straight out of the box (Just copy and paste!) without extra setup.
-
----
-
-## Download
-
-| G-Code Type      | Description                  | Script Link                                                                 | RAW Link                                                                 |
-|--------------|------------------------------|-----------------------------------------------------------------------------|--------------------------------------------------------------------------|
-| Start G-Code | Optimized startup sequence   | [View Script](https://github.com/Justagwas/P1S-GCODE/blob/main/start%20G-code) | [Raw File](https://github.com/Justagwas/P1S-GCODE/raw/refs/heads/main/start%20G-code) |
-| End G-Code   | Controlled shutdown/cooldown | [View Script](https://github.com/Justagwas/P1S-GCODE/blob/main/end%20G-code)   | [Raw File](https://github.com/Justagwas/P1S-GCODE/raw/refs/heads/main/end%20G-code)   |
-
-> [!TIP]  
-> Back up your current start and end G-code before replacing them in your Slicer.
 
 ---
 

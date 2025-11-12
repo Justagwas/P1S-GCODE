@@ -82,6 +82,8 @@ They are designed to:
 > [!WARNING]  
 > Adjust Z-offset carefully. Too high = poor adhesion. Too low = risk of nozzle/bed damage.
 
+- The default values are {-0.02} or {0.00}. Recommended range is from {-0.04} to {0.04}, although I highly advise against touching this value if not needed.
+
 > [!WARNING]  
 > Commands like `M17`, `M220`, and `M221` directly affect motion. Incorrect values may cause instability or clogs.
 

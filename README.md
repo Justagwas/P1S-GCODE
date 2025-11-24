@@ -1,107 +1,240 @@
-# Bambu Lab P1S - Enhanced Start & End G-code
-### Verified on P1S with AMS - Last Tested on 2025/11/24
+# Bambu Lab P1S – Enhanced Start & End G-code
 
-### Recommended for use with [Orca Slicer](https://github.com/SoftFever/OrcaSlicer).
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Status-Active-brightgreen?labelColor=2d2d2d&color=4ade80">
+  <source media="(prefers-color-scheme: light)" srcset="https://img.shields.io/badge/Status-Active-brightgreen">
+  <img alt="Status: Active" src="https://img.shields.io/badge/Status-Active-brightgreen">
+</picture>
 
-*Works with ANY.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Printer-Bambu%20Lab%20P1S-blue?labelColor=2d2d2d&color=3b82f6">
+  <source media="(prefers-color-scheme: light)" srcset="https://img.shields.io/badge/Printer-Bambu%20Lab%20P1S-blue">
+  <img alt="Printer" src="https://img.shields.io/badge/Printer-Bambu%20Lab%20P1S-blue">
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/AMS-Supported-purple?labelColor=2d2d2d&color=a855f7">
+  <source media="(prefers-color-scheme: light)" srcset="https://img.shields.io/badge/AMS-Supported-purple">
+  <img alt="AMS Supported" src="https://img.shields.io/badge/AMS-Supported-purple">
+</picture>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/G--code%20Profiles-XL%20%7C%20L%20%7C%20S-orange?labelColor=2d2d2d&color=f97316">
+  <source media="(prefers-color-scheme: light)" srcset="https://img.shields.io/badge/G--code%20Profiles-XL%20%7C%20L%20%7C%20S-orange">
+  <img alt="Profiles" src="https://img.shields.io/badge/G--code%20Profiles-XL%20%7C%20L%20%7C%20S-orange">
+</picture>
+
+
+Carefully tuned, optimized, and documented G-code for **Bambu Lab P1S** printers, with full **AMS** support.  
+Made to give you a more controlled printing workflow tailored to your priorities: **reliability**, **balance**, or **speed**.
+
+_Last validated on P1S + AMS — 2025-12-24_  
+_Recommended slicer: [OrcaSlicer](https://github.com/SoftFever/OrcaSlicer)_
 
 ---
 
-## Download / Copy
+## ⭐ Variant Overview
 
-| G-Code Type      | Description                  | Script Link                                                                 | RAW Link                                                                 |
-|--------------|------------------------------|-----------------------------------------------------------------------------|--------------------------------------------------------------------------|
-| Start G-Code | Optimized startup sequence   | [View Script](https://github.com/Justagwas/P1S-GCODE/blob/main/start%20G-code) | [Raw File](https://github.com/Justagwas/P1S-GCODE/raw/refs/heads/main/start%20G-code) |
-| End G-Code   | Controlled shutdown/cooldown | [View Script](https://github.com/Justagwas/P1S-GCODE/blob/main/end%20G-code)   | [Raw File](https://github.com/Justagwas/P1S-GCODE/raw/refs/heads/main/end%20G-code)   |
+Choose the G-code variant that aligns with your workflow:
+
+- 🟩 **XL — Reliability & Cleanliness First (Creator Used)**  
+- 🟦 **L — Balanced for Everyday Printing (Recommended)**  
+- 🟧 **S — Performance / Speed-Oriented**
+
+## ⭐ Star Intensity Guide
+
+Stars represent **feature intensity**, not quality:
+
+- **★★★** — Highest / most thorough  
+- **★★** — Balanced  
+- **★** — Minimal / fastest  
+
+Numbers (e.g., *24 wipes*) appear for measurable operations.
+
+---
+
+# 📌 START G-code
+
+| **Feature** | 🟩 **XL-Start G-code (~6 min)** | 🟦 **L-Start G-code (~TBA)** | 🟧 **S-Start G-code (~TBA)** |
+|-------------|---------------------------------|------------------------------|------------------------------|
+| **Links** | <div align="center">[View XL Start G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/start%20G-code)<br>[View Raw XL Start G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/start%20G-code)</div> | <div align="center">*Coming Soon*</div> | <div align="center">*Coming Soon*</div> |
+| **Startup Speed** [(1)](#1-startup-speed) | ★ | ★★ | ★★★ |
+| **Startup Reliability** [(2)](#2-startup-reliability) | ★★★ | ★★ | ★ |
+| **Initialization Depth** [(3)](#3-initialization-depth) | ★★★ | ★★ | ★ |
+| **AMS Verification** [(4)](#4-ams-verification) | ★★★ | ★★★ | ★★ |
+| **Purge Volume** [(5)](#5-purge-volume) | ★★★ High | ★★ Medium | ★ Low |
+| **Bed Mesh Strictness** [(6)](#6-bed-mesh-strictness) | ★★★ High | ★★★ High | ★★ Medium |
+| **Thermal Stabilization** [(7)](#7-thermal-stabilization) | ★★★ Strict | ★★ Light | ★ Minimal |
+| **Temperature Staging** [(8)](#8-temperature-staging) | ★★★ Multi-stage | ★★ Simplified | ★ Minimal |
+| **Wipe Count** [(9)](#9-wipe-count) | ★★★ 24 wipes | TBA | TBA |
+| **Purge Line** [(10)](#10-purge-line) | Yes | No | No |
+| **Best For** | 🟩 Low-maintenance, long-interval printing | 🟦 Regular daily printing | 🟧 Fast, high-turnover printing |
+
+---
+
+# 📌 END G-code
+
+| **Feature** | 🟩 **XL-End G-code (~TBA)** | 🟦 **L-End G-code (~TBA)** | 🟧 **S-End G-code (~TBA)** |
+|-------------|-----------------------------|-----------------------------|-----------------------------|
+| **Links** | <div align="center">[View XL End G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/end%20G-code)<br>[View Raw XL End G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/end%20G-code)</div> | <div align="center">*Coming Soon*</div> | <div align="center">*Coming Soon*</div> |
+| **Shutdown Speed** [(11)](#11-shutdown-speed) | ★ | ★★ (TBA) | ★★★ (TBA) |
+| **Unload Reliability** [(12)](#12-unload-reliability) | ★★★ High | ★★ (TBA) | ★ (TBA) |
+| **Post-Print Purge** [(13)](#13-post-print-purge) | ★★★ High | ★★ Medium (TBA) | ★ Low (TBA) |
+| **Nozzle Wipe After Print** [(14)](#14-nozzle-wipe-after-print) | Extended | Moderate (TBA) | Minimal (TBA) |
+| **Cooldown Staging** [(15)](#15-cooldown-staging) | Multi-stage | Balanced (TBA) | None (TBA) |
+| **AMS Unload Confidence** [(16)](#16-ams-unload-confidence) | High | High (TBA) | Medium (TBA) |
+| **Best For** | 🟩 Clean, reliable long idle periods | 🟦 Balanced routine use | 🟧 Rapid printing |
+
+---
+
+## 📘 FEATURE EXPLANATIONS
+
+### ▶ START G-code Feature Explanations
+
+<details>
+<summary><strong>Expand START feature explanations</strong></summary>
+<br>
+
+#### (1) Startup Speed  
+Fastness of reaching print-ready state.  
+**★ = Slowest**, **★★ = Balanced**, **★★★ = Fastest**
+
+#### (2) Startup Reliability  
+How thoroughly the printer validates readiness (AMS, temps, resets).  
+**★★★ = Highest reliability**
+
+#### (3) Initialization Depth  
+How completely machine state is reset (motors, offsets, flow).
+
+#### (4) AMS Verification  
+Strictness of filament slot and load verification.  
+**More stars = more predictable/reliable AMS behavior**
+
+#### (5) Purge Volume  
+Amount of extruded material used to clear residue.  
+**More stars = cleaner first layers**
+
+#### (6) Bed Mesh Strictness  
+How rigorously stored mesh is validated and applied.
+
+#### (7) Thermal Stabilization  
+How evenly the nozzle temperature stabilizes before printing.
+
+#### (8) Temperature Staging  
+Number of controlled temperature transitions before printing.
+
+#### (9) Wipe Count  
+Directional wipes for nozzle cleaning (XL ≈ 24 passes).
+
+#### (10) Purge Line  
+Presence of a purge line before the first layer.
+
+</details>
+
+### ▶ END G-code Feature Explanations
+
+<details>
+<summary><strong>Expand END feature explanations</strong></summary>
+<br>
+
+#### (11) Shutdown Speed  
+Speed of completing shutdown routines.  
+**★ = Slowest**, **★★★ = Fastest**
+
+#### (12) Unload Reliability  
+Consistency and safety of AMS unloading logic.  
+**★★★ = Most thorough**
+
+#### (13) Post-Print Purge  
+Amount of purging after the print to remove remaining residue.
+
+#### (14) Nozzle Wipe After Print  
+Intensity of wipe actions after the job finishes.
+
+#### (15) Cooldown Staging  
+Whether cooldown is staged (XL) or rapid (S).
+
+#### (16) AMS Unload Confidence  
+Reliability of returning filament to AMS slots.
+
+</details>
+
+---
+
+# 🛠 Installation (OrcaSlicer & Bambu Studio)
+
+### For **OrcaSlicer**
+1. Select your **P1S** printer profile.  
+2. Go to **Machine G-code** → **Start G-code** / **End G-code**.  
+3. Paste the desired **XL / L / S** variants.  
+4. Save as a **new printer preset** (recommended).  
+5. Test with a small print.
+
+### For **Bambu Studio**
+1. Open **P1S** printer profile.  
+2. Go to **Device** → **Machine Settings** → **Start / End G-code**.  
+3. Paste the chosen variants.  
+4. Save.  
+5. Test with a small print.
 
 > [!TIP]  
-> Back up your current start and end G-code before replacing them in your Slicer.
+> Begin with **XL** if you want the safest, cleanest, most conservative behavior.  
 
 ---
 
-## Overview
+## ⚙ Motion-Affecting Commands
 
-These G-Code scripts replace the default Start and End routines in your Slicer. 
+These scripts use commands such as `M17`, `M220`, and `M221` to manage motor currents and flow.  
+Incorrect changes can cause:
 
-They are designed to:
+- Lost steps  
+- Rough extrusion  
+- Clogging  
+- Overheating  
 
-- Make print setup and shutdown faster.
-- Keep the nozzle and bed clean between prints.
-- Improve AMS filament handling reliability.
-- Verify mesh bed integrity and trigger leveling if needed.
-- Work straight out of the box (Just copy and paste!) without extra setup.
-
----
-
-## Script Summary
-
-### Start G-code
-- Resets system state, motor currents, and fan defaults.  
-- Enables runout detection and resonance compensation.
-- Heats bed and nozzle in parallel while preparing motion.
-- Homes all axes.
-- Initializes AMS, reloads, and verifies filament.
-- Purges and wipes at extrusion temperature to ensure a clean nozzle.
-- Cools slightly, then validates mesh bed, if selected, and enables compensation.
-- Draws a purge line at print temperature before starting the job.
-
-### End G-code
-- Clears motion buffer and resets motor/acceleration settings.
-- Performs a small retract and spiral lift to safely move away from the print.
-- Parks at purge area, extrudes/purges, and runs a wipe routine to leave nozzle clean.
-- Gradually cools nozzle to prevent ooze and stringing, then unloads filament back into AMS.
-- Cools down and performs a final nozzle wipe with ABL temporarily disabled.
-- Re‑enables ABL and resonance suppression, and safely stops timelapse recording if active.
-- Raises Z and moves toolhead to a rear park position.
-- Runs staged fan cooldown (high → medium → off) to manage chamber and hotend ventilation and temps.
-- Reduces motor currents for idle state and clears action flags.
+The included scripts use **firmware-aligned conservative defaults**.  
+Modify only incrementally and test carefully.
 
 ---
 
-## Benefits
+## 🔧 Device Compatibility
 
-- Faster time-to-print through efficient prep.
-- Cleaner first layers and reduced oozing.
-- More reliable AMS loading/unloading.
-- Only the necessities and safeguards!
-
----
-
-## Integration & Testing
-
-1. Open **Your Slicer** -> **Machine G-Code**.
-2. Replace the **Start G-Code** and **End G-code** sections with these scripts.
-3. Save and run a calibration or small test print.
-4. Observe AMS behavior, wipe pattern, bed leveling, printing, and shutdown.
-5. Adjust only if needed.
+- **P1S + AMS** — fully supported  
+- **P1S without AMS** — AMS commands are **automatically ignored**  
+- **X1C (no AMS)** — NOT Tested
+- **X1C + AMS** — NOT Tested
 
 ---
 
-## Technical Notes
+## ⚠️ Who This Is *Not* For
 
-> [!WARNING]  
-> Adjust Z-offset carefully. Too high = poor adhesion. Too low = risk of nozzle/bed damage.
+These profiles may not be the best fit if:
 
-- The default values are {-0.02} or {0.00}. Recommended range is from {-0.04} to {0.04}, although I highly advise against touching this value if not needed.
-
-> [!WARNING]  
-> Commands like `M17`, `M220`, and `M221` directly affect motion. Incorrect values may cause instability or clogs.
-
-- Scripts are tailored for **P1S with AMS**, but also work on **P1S** and **X1C** without AMS (AMS-specific calls are skipped automatically).
+- You prefer the **default Bambu workflow** and do not want to alter machine behavior  .
+- You want the **absolute fastest** startup and shutdown sequences without additional safeguards (S profile includes safeguards).
 
 ---
 
-## Contributing
+## ♻️ How to Restore Stock G-code
 
-Contributions are welcome:
-1. Fork the repository.
-2. Modify the script(s).
-3. Submit a pull request with clear documentation.
-4. Open an issue for reproducible problems or firmware quirks.
+1. Open **OrcaSlicer** or **Bambu Studio**.  
+2. Create a **new** P1S preset.  
+3. Go to **Machine G-code**.  
+4. Copy the default Start/End G-code.  
+5. Paste into your modified preset.  
+6. Save.
 
 ---
 
-## Contact
+## 🤝 Contributing
 
-For questions or feedback, reach out at:  
-[contact@justagwas.com](mailto:contact@justagwas.com)
+1. Fork the repository  
+2. Make improvements or variants  
+3. Submit a PR  
+4. Include reproduction steps if reporting bugs
+
+---
+
+## 📬 Contact
+
+**contact@justagwas.com**

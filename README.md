@@ -69,13 +69,13 @@ Numbers (e.g., *24 wipes*) appear for measurable operations.
 | **Temperature Staging** [(8)](#8-temperature-staging) | ★★★ Multi-stage | ★★ Simplified | ★ Minimal |
 | **Wipe Count** [(9)](#9-wipe-count) | ★★★ 24 wipes | TBA | TBA |
 | **Purge Line** [(10)](#10-purge-line) | Yes | No | No |
-| **Best For** | Low-maintenance, long-interval printing | Regular daily printing | Fast, high-turnover printing |
+| **Best For** | Low-maintenance, infrequent printing | Regular daily printing | Fast, high-turnover printing |
 
 ---
 
 # 📌 END G-code
 
-| **Feature** | 🟩 **XL-End G-code** | 🟦 **L-End G-code** | 🟧 **S-End G-code** |
+| **Feature** | 🟩 **XL-End G-code** 🟩 | 🟦 **L-End G-code** 🟦 | 🟧 **S-End G-code** 🟧 |
 |-------------|-----------------------------|-----------------------------|-----------------------------|
 | **Links** | <div align="center">[View XL End G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/XL-END%20G-code)<br>[View Raw XL End G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/XL-END%20G-code)</div> | <div align="center">*Coming Soon*</div> | <div align="center">*Coming Soon*</div> |
 | **Runtime** | TBA | TBA | TBA |

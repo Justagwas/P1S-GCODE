@@ -1,10 +1,10 @@
-;============================================================
-;===== XL-Start G-code for Bambu Lab P1S WITH AMS ===========
-;===== Author: Justagwas ====================================
-;===== Date: 2025-11-24 =====================================
-;============================================================
+;===========================================================
+;===== XL-Start G-code for Bambu Lab P1S WITH AMS ==========
+;===== Author: Justagwas ===================================
+;===== Date: 2025-11-24 ====================================
+;===========================================================
 
-;===== DEFAULTING ===========================================
+;===== DEFAULTING ==========================================
 G90                              ; Absolute positioning mode
 M17 X1.2 Y1.2 Z0.75              ; DEFAULT MOTOR CURRENTS DO NOT CHANGE
 M290 X40 Y40 Z2.6666666          ; DEFAULTS DO NOT CHANGE
@@ -15,26 +15,26 @@ M1002 set_gcode_claim_speed_level :5  ; Internal speed mode
 M221 X0 Y0 Z0                    ; Reset flow modifiers per axis
 G29.1 Z{-0.02}                   ; Z-offset BEST = -0.02mm - negative=closer to bed, positive=farther
 
-;===== Enable filament runout detection =====================
+;===== Enable filament runout detection ====================
 M412 S1                          ; Enable runout sensor (S0=disable)
 M975 S1                          ; Enable resonance compensation (S0=disable)
 
-;===== Turn on fans to safe defaults ========================
+;===== Turn on fans to safe defaults =======================
 M106 P1 S125                     ; Part cooling fan 49% (0-255 scale)
 M106 P2 S50                      ; Aux fan 20% (0-255 scale)
 M106 P3 S125                     ; Chamber fan 49% (0-255 scale)
 M710 A1 S255                     ; MC board fan auto mode, max 100%
 
-;===== Preheat bed and nozzle ===============================
+;===== Preheat bed and nozzle ==============================
 M1002 gcode_claim_action :2      ; Declare heating action
 M140 S[bed_temperature_initial_layer]  ; Start bed heating (non-blocking)
 M104 S160                        ; Start nozzle heating to 160C (non-blocking)
 
-;===== Initial homing =======================================
+;===== Initial homing ======================================
 G28                              ; Home all axes (X, Y, Z to endstops)
 M400                             ; Wait for moves to complete
 
-;===== Prepare AMS (force reload) ===========================
+;===== Prepare AMS (force reload) ==========================
 M1002 gcode_claim_action :4      ; Declare AMS action
 M620 M                           ; AMS: enter manual mode
 M620 S[initial_extruder]A        ; AMS: select extruder slot
@@ -42,22 +42,22 @@ T[initial_extruder]              ; Activate tool
 M621 S[initial_extruder]A        ; AMS: confirm filament loaded
 M620.1 E F{filament_max_volumetric_speed[initial_extruder]/2.4053*60} T{nozzle_temperature_range_high[initial_extruder]}
 
-;===== Heat nozzle to purge temperature =====================
+;===== Heat nozzle to purge temperature ====================
 M109 S{nozzle_temperature_range_high[initial_extruder]}  ; Wait for nozzle temp (blocking)
 
-;===== Declare purge action =================================
+;===== Declare purge action ================================
 M1002 gcode_claim_action :14     ; Declare wipe/purge action
 
-;===== Move to purge area ===================================
+;===== Move to purge area ==================================
 G1 X65 Y265 F8000                ; Move to purge position at 8000mm/min
 
-;===== Fan to max ===========================================
+;===== Fan to max ==========================================
 M106 P1 S255                     ; Part fan to 100% for cooling purge
 G92 E0                           ; Reset extruder position to zero
 G1 E2 F100                       ; Extrude 2mm at 100mm/min (prime nozzle)
 G4 S1                            ; Dwell 1 second
 
-;===== Purge ================================================
+;===== Purge ===============================================
 G92 E0                           ; Reset extruder position
 G1 E30 F200                      ; Extrude 30mm at 200mm/min (purging old filament)
 M400                             ; Wait for moves to complete
@@ -66,13 +66,13 @@ G92 E0                           ; Reset extruder position
 G1 E-2 F200                      ; Retract 2mm at 200mm/min
 M400                             ; Wait for moves to complete
 
-;===== Lower purge temperature ==============================
+;===== Lower purge temperature =============================
 M104 S180                        ; Start cooling to 180C (non-blocking)
 G92 E0                           ; Reset extruder position
 G1 E10 F100                      ; Extrude 10mm at 100mm/min (final ooze)
 M400                             ; Wait for moves to complete
 
-;===== Wiping movements =====================================
+;===== Wiping movements ====================================
 G1 E-1 F200                      ; Retract 1mm at 200mm/min
 G1 X70 F9000                     ; Wipe move to X70 at 9000mm/min
 G1 X95 F12000                    ; Wipe move to X95 at 12000mm/min
@@ -93,13 +93,13 @@ M400                             ; Wait for moves to complete
 M104 S180                        ; Ensure temp at 180C (non-blocking)
 G4 S2                            ; Dwell 2 seconds
 
-;===== Lower fan ============================================
+;===== Lower fan ===========================================
 G1 X88 F8000                     ; Move to X88
 G1 X89 F1000                     ; Slow move to X89 (precision positioning)
 M106 P1 S150                     ; Part fan to 59%
 G4 S2                            ; Dwell 2 seconds
 
-;===== Cool to <=180 before leveling ========================
+;===== Cool to <=180 before leveling =======================
 G1 E-1 F200                      ; Retract 1mm
 M109 S180                        ; Wait for nozzle to reach 180C (blocking)
 G1 X70 F9000                     ; Wipe during cooldown
@@ -110,10 +110,10 @@ G1 X70 F9000                     ; Wipe back
 G1 X140 F9000                    ; Move to X140
 M104 S160                        ; Start cooling to 160C (non-blocking)
 
-;===== Reset action =========================================
+;===== Reset action ========================================
 M1002 gcode_claim_action :0      ; Bambu internal: clear action state
 
-;===== Load stored mesh =====================================
+;===== Load stored mesh ====================================
 G1 X110 Y110 F6000               ; Move to center at 6000mm/min
 M400                             ; Wait for moves to complete
 M1002 judge_flag g29_before_print_flag
@@ -126,15 +126,15 @@ M500                             ; Saves data.
 M623                             ; End if.
 G29.2 S1                         ; Enable bed leveling compensation
 
-;===== Move to rightmost bottom corner ======================
+;===== Move to rightmost bottom corner =====================
 M104 S[nozzle_temperature_initial_layer]  ; Start heating to print temp
 G1 Z10 F1200                     ; Lift Z to 10mm at 1200mm/min
 G1 X220 Y5 F6000                 ; Move to purge line start position
 
-;===== Wait for extrusion temp ==============================
+;===== Wait for extrusion temp =============================
 M109 S[nozzle_temperature_initial_layer]  ; Wait for print temp (blocking)
 
-;===== Start extrusion purge line ===========================
+;===== Start extrusion purge line ==========================
 G92 E0                           ; Reset extruder position
 G1 E3 F200                       ; Extrude 3mm at 200mm/min (prime)
 G1 Z0.3 F1200                    ; Lower to 0.3mm height
@@ -142,12 +142,12 @@ G1 X20 Y5 F3000                  ; Move to X20 while extruding starts
 G1 E5 F200                       ; Extrude 5mm
 G1 X220 Y5 E30 F1200             ; Draw purge line while extruding 30mm total
 
-;===== End of purge line ====================================
+;===== End of purge line ===================================
 G1 Z1 F3000                      ; Lift Z to 1mm at 3000mm/min
 G1 X223 F3000                    ; Move slightly right
 G92 E0                           ; Reset extruder to zero
 
-;===== Final state ==========================================
+;===== Final state =========================================
 M106 P1 S150                     ; Part fan to 59%
 M400                             ; Wait for moves to complete
 M975 S1                          ; Calibrated Supression

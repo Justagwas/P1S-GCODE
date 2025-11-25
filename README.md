@@ -55,9 +55,9 @@ Numbers (e.g., *24 wipes*) appear for measurable operations.
 
 # 📌 START G-code
 
-| **Feature** | 🟩 **XL-Start G-code (~6 min)** | 🟦 **L-Start G-code (~TBA)** | 🟧 **S-Start G-code (~TBA)** |
+| **Feature** | 🟩 **XL-Start G-code (~6 min)** 🟩 | 🟦 **L-Start G-code (~TBA)** 🟦 | 🟧 **S-Start G-code (~TBA)** 🟧 |
 |-------------|---------------------------------|------------------------------|------------------------------|
-| **Links** | <div align="center">[View XL Start G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/start%20G-code)<br>[View Raw XL Start G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/start%20G-code)</div> | <div align="center">*Coming Soon*</div> | <div align="center">*Coming Soon*</div> |
+| **Links** | <div align="center">[View XL Start G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/XL-START%20G-code)<br>[View Raw XL Start G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/XL-START%20G-code)</div> | <div align="center">*Coming Soon*</div> | <div align="center">*Coming Soon*</div> |
 | **Startup Speed** [(1)](#1-startup-speed) | ★ | ★★ | ★★★ |
 | **Startup Reliability** [(2)](#2-startup-reliability) | ★★★ | ★★ | ★ |
 | **Initialization Depth** [(3)](#3-initialization-depth) | ★★★ | ★★ | ★ |
@@ -68,7 +68,7 @@ Numbers (e.g., *24 wipes*) appear for measurable operations.
 | **Temperature Staging** [(8)](#8-temperature-staging) | ★★★ Multi-stage | ★★ Simplified | ★ Minimal |
 | **Wipe Count** [(9)](#9-wipe-count) | ★★★ 24 wipes | TBA | TBA |
 | **Purge Line** [(10)](#10-purge-line) | Yes | No | No |
-| **Best For** | 🟩 Low-maintenance, long-interval printing | 🟦 Regular daily printing | 🟧 Fast, high-turnover printing |
+| **Best For** | 🟩 Low-maintenance, long-interval printing 🟩 | 🟦 Regular daily printing 🟦 | 🟧 Fast, high-turnover printing 🟧 |
 
 ---
 
@@ -76,13 +76,13 @@ Numbers (e.g., *24 wipes*) appear for measurable operations.
 
 | **Feature** | 🟩 **XL-End G-code (~TBA)** | 🟦 **L-End G-code (~TBA)** | 🟧 **S-End G-code (~TBA)** |
 |-------------|-----------------------------|-----------------------------|-----------------------------|
-| **Links** | <div align="center">[View XL End G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/end%20G-code)<br>[View Raw XL End G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/end%20G-code)</div> | <div align="center">*Coming Soon*</div> | <div align="center">*Coming Soon*</div> |
-| **Shutdown Speed** [(11)](#11-shutdown-speed) | ★ | ★★ (TBA) | ★★★ (TBA) |
-| **Unload Reliability** [(12)](#12-unload-reliability) | ★★★ High | ★★ (TBA) | ★ (TBA) |
-| **Post-Print Purge** [(13)](#13-post-print-purge) | ★★★ High | ★★ Medium (TBA) | ★ Low (TBA) |
-| **Nozzle Wipe After Print** [(14)](#14-nozzle-wipe-after-print) | Extended | Moderate (TBA) | Minimal (TBA) |
-| **Cooldown Staging** [(15)](#15-cooldown-staging) | Multi-stage | Balanced (TBA) | None (TBA) |
-| **AMS Unload Confidence** [(16)](#16-ams-unload-confidence) | High | High (TBA) | Medium (TBA) |
+| **Links** | <div align="center">[View XL End G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/XL-END%20G-code)<br>[View Raw XL End G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/XL-END%20G-code)</div> | <div align="center">*Coming Soon*</div> | <div align="center">*Coming Soon*</div> |
+| **Shutdown Speed** [(11)](#11-shutdown-speed) | ★ | ★★ | ★★★ |
+| **Unload Reliability** [(12)](#12-unload-reliability) | ★★★ High | ★★★ High | ★★ Medium |
+| **Post-Print Purge** [(13)](#13-post-print-purge) | ★★★ High | ★★ Medium | ★ Low |
+| **Nozzle Wipe After Print** [(14)](#14-nozzle-wipe-after-print) | Extended | Moderate | Minimal |
+| **Cooldown Staging** [(15)](#15-cooldown-staging) | Multi-stage | Balanced | None |
+| **AMS Unload Confidence** [(16)](#16-ams-unload-confidence) | High | High | Medium |
 | **Best For** | 🟩 Clean, reliable long idle periods | 🟦 Balanced routine use | 🟧 Rapid printing |
 
 ---

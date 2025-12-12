@@ -91,7 +91,7 @@ Numbers (e.g., *24 wipes*) appear for measurable operations.
 
 ## 📘 FEATURE EXPLANATIONS
 
-### ▶ START G-code Feature Explanations
+### START G-code Feature Explanations
 
 <details>
 <summary><strong>Expand START feature explanations</strong></summary>
@@ -133,7 +133,7 @@ Presence of a purge line before the first layer.
 
 </details>
 
-### ▶ END G-code Feature Explanations
+### END G-code Feature Explanations
 
 <details>
 <summary><strong>Expand END feature explanations</strong></summary>

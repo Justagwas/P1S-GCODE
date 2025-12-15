@@ -72,7 +72,7 @@ Numbers (e.g., *24 wipes*) appear for measurable operations.
 | **Feature** | 🟩 **XL-Start G-code** 🟩 | 🟦 **L-Start G-code** 🟦 | 🟧 **S-Start G-code** 🟧 |
 |-------------|---------------------------------|------------------------------|------------------------------|
 | **Links** | <div align="center">[View XL Start G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/XL-START%20G-code)<br>[View Raw XL Start G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/XL-START%20G-code)</div> | <div align="center">[View L Start G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/L-START%20G-code)<br>[View Raw L Start G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/L-START%20G-code)</div> | <div align="center">[View S Start G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/S-START%20G-code)<br>[View Raw S Start G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/S-START%20G-code)</div> |
-| **Runtime**<br><sub><em>Please note that runtimes can be as short as ~2 minutes (L-profile) if your bed mesh is valid.</em></sub> | ~5 minutes | ~4 minutes | ~2 minutes |
+| **Runtime**<br><sub><em>Please note that runtimes can be<br>as short as ~2 minutes (L-profile)<br>if your bed mesh is valid.</em></sub> | ~5 minutes | ~4 minutes | ~2 minutes |
 | **Startup Speed** [(1)](#1-startup-speed) | ★ | ★★ | ★★★ |
 | **Startup Reliability** [(2)](#2-startup-reliability) | ★★★ | ★★★ | ★ |
 | **Initialization Depth** [(3)](#3-initialization-depth) | ★★★ | ★★ | ★ |

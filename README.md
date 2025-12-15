@@ -40,8 +40,8 @@ _Recommended slicer: [OrcaSlicer](https://github.com/SoftFever/OrcaSlicer)_
 
 ### ⭐ Enhanced Start & End Bambu Lab P1S G-code
 
-#### - [View Enhanced Start G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/README.md#-start-g-code)
-#### - [View Enhanced End G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/README.md#-end-g-code)
+#### - [View Enhanced Start G-code](https://github.com/Justagwas/P1S-GCODE?tab=readme-ov-file#-start-g-code)
+#### - [View Enhanced End G-code](https://github.com/Justagwas/P1S-GCODE?tab=readme-ov-file#-end-g-code)
 
 These custom G-codes use advanced adaptive bed leveling to intelligently validate and re-probe bed mesh only when needed.
 
@@ -194,7 +194,7 @@ Reliability of returning filament to AMS slots.
 5. Test with a small print.
 
 > [!TIP]  
-> Begin with **XL** if you want the safest, cleanest, most conservative behavior.  
+> Begin with **L** if you want the safest, cleanest, most balanced behavior.  
 
 ---
 

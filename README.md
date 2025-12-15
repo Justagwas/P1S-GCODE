@@ -43,14 +43,16 @@ _Recommended slicer: [OrcaSlicer](https://github.com/SoftFever/OrcaSlicer)_
 #### - [View Enhanced Start G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/README.md#-start-g-code)
 #### - [View Enhanced End G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/README.md#-end-g-code)
 
+These custom G-codes use advanced adaptive bed leveling to intelligently validate and re-probe bed mesh only when needed.
+
 ---
 
 ## 🟩-🟦-🟧 Variant Overview
 
 Choose the G-code variant that aligns with your workflow:
 
-- 🟩 **XL — Reliability & Cleanliness First (Creator Used)**  
-- 🟦 **L — Balanced for Everyday Printing (Recommended)**  
+- 🟩 **XL — Reliability & Cleanliness First**  
+- 🟦 **L — Balanced for Everyday Printing (Creator Used) (Recommended)**  
 - 🟧 **S — Performance / Speed-Oriented**
 
 ## ⭐ Star Intensity Guide
@@ -69,19 +71,19 @@ Numbers (e.g., *24 wipes*) appear for measurable operations.
 
 | **Feature** | 🟩 **XL-Start G-code** 🟩 | 🟦 **L-Start G-code** 🟦 | 🟧 **S-Start G-code** 🟧 |
 |-------------|---------------------------------|------------------------------|------------------------------|
-| **Links** | <div align="center">[View XL Start G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/XL-START%20G-code)<br>[View Raw XL Start G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/XL-START%20G-code)</div> | <div align="center">*Coming Soon*</div> | <div align="center">*Coming Soon*</div> |
-| **Runtime** | ~6 minutes | TBA | TBA |
+| **Links** | <div align="center">[View XL Start G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/XL-START%20G-code)<br>[View Raw XL Start G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/XL-START%20G-code)</div> | <div align="center">[View L Start G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/L-START%20G-code)<br>[View Raw L Start G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/L-START%20G-code)</div> | <div align="center">[View S Start G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/S-START%20G-code)<br>[View Raw S Start G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/S-START%20G-code)</div> |
+| **Runtime**<br><sub><em>Please note that runtimes can be as short as ~2 minutes (L-profile) if your bed mesh is valid.</em></sub> | ~5 minutes | ~4 minutes | ~2 minutes |
 | **Startup Speed** [(1)](#1-startup-speed) | ★ | ★★ | ★★★ |
-| **Startup Reliability** [(2)](#2-startup-reliability) | ★★★ | ★★ | ★ |
+| **Startup Reliability** [(2)](#2-startup-reliability) | ★★★ | ★★★ | ★ |
 | **Initialization Depth** [(3)](#3-initialization-depth) | ★★★ | ★★ | ★ |
 | **AMS Verification** [(4)](#4-ams-verification) | ★★★ | ★★★ | ★★ |
 | **Purge Volume** [(5)](#5-purge-volume) | ★★★ High | ★★ Medium | ★ Low |
-| **Bed Mesh Strictness** [(6)](#6-bed-mesh-strictness) | ★★★ High | ★★★ High | ★★ Medium |
+| **Bed Mesh Strictness** [(6)](#6-bed-mesh-strictness) | ★★★ High | ★★★ High | ★ Low |
 | **Thermal Stabilization** [(7)](#7-thermal-stabilization) | ★★★ Strict | ★★ Light | ★ Minimal |
-| **Temperature Staging** [(8)](#8-temperature-staging) | ★★★ Multi-stage | ★★ Simplified | ★ Minimal |
-| **Wipe Count** [(9)](#9-wipe-count) | ★★★ 24 wipes | TBA | TBA |
-| **Purge Line** [(10)](#10-purge-line) | Yes | No | No |
-| **Best For** | Low-maintenance, infrequent printing | Regular daily printing | Fast, high-turnover printing |
+| **Temperature Staging** [(8)](#8-temperature-staging) | ★★★ Multi-stage | ★★ Optimized | ★ Minimal |
+| **Wipe Count** [(9)](#9-wipe-count) | ★★★ 24 wipes | ★★ 16 wipes | ★ 8 wipes |
+| **Purge Line** [(10)](#10-purge-line) | Yes | Small | No |
+| **Best For** | Infrequent printing | Regular daily printing | Fast, high-turnover printing |
 
 ---
 
@@ -89,7 +91,7 @@ Numbers (e.g., *24 wipes*) appear for measurable operations.
 
 | **Feature** | 🟩 **XL-End G-code** 🟩 | 🟦 **L-End G-code** 🟦 | 🟧 **S-End G-code** 🟧 |
 |-------------|-----------------------------|-----------------------------|-----------------------------|
-| **Links** | <div align="center">[View XL End G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/XL-END%20G-code)<br>[View Raw XL End G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/XL-END%20G-code)</div> | <div align="center">*Coming Soon*</div> | <div align="center">*Coming Soon*</div> |
+| **Links** | <div align="center">[View XL End G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/XL-END%20G-code)<br>[View Raw XL End G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/XL-END%20G-code)</div> | <div align="center">[View L End G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/L-END%20G-code)<br>[View Raw L End G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/L-END%20G-code)</div> | <div align="center">[View S End G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/S-END%20G-code)<br>[View Raw S End G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/S-END%20G-code)</div> |
 | **Runtime** | TBA | TBA | TBA |
 | **Shutdown Speed** [(11)](#11-shutdown-speed) | ★ | ★★ | ★★★ |
 | **Unload Reliability** [(12)](#12-unload-reliability) | ★★★ High | ★★★ High | ★★ Medium |
@@ -97,7 +99,7 @@ Numbers (e.g., *24 wipes*) appear for measurable operations.
 | **Nozzle Wipe After Print** [(14)](#14-nozzle-wipe-after-print) | Extended | Moderate | Minimal |
 | **Cooldown Staging** [(15)](#15-cooldown-staging) | Multi-stage | Balanced | None |
 | **AMS Unload Confidence** [(16)](#16-ams-unload-confidence) | High | High | Medium |
-| **Best For** | Clean, reliable long idle periods | Balanced routine use | Rapid printing |
+| **Best For** | Long idle periods | Balanced routine use | Rapid printing |
 
 ---
 

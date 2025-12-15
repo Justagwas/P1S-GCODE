@@ -1,0 +1,109 @@
+;===========================================================
+;===== S-Start G-code for Bambu Lab P1S WITH AMS ===========
+;===== Author: Justagwas ===================================
+;===== Date: 2025-12-15 ====================================
+;===========================================================
+
+; This start script is the "S" profile for the Bambu Lab P1S.
+; It prioritizes fast start-up while retaining essential safety and
+; reliability features. Purge volume, wiping actions, and thermal
+; staging are minimized.
+; The last known bed mesh is reused directly (bed leveling compensation
+; enabled without validation or re-probing) to eliminate startup
+; overhead, and no purge line is drawn.
+; AMS verification is kept lightweight to ensure the correct filament
+; is loaded without adding unnecessary delay.
+
+;===== DEFAULTING ==========================================
+G90                              ; Absolute positioning mode
+M17 X1.2 Y1.2 Z0.75              ; DEFAULT MOTOR CURRENTS DO NOT CHANGE
+M290 X40 Y40 Z2.6666666          ; DEFAULTS DO NOT CHANGE
+M220 S100                        ; Feedrate 100%
+M221 S100                        ; Flow rate 100%
+M73.2 R1.0                       ; Reset print time calculation
+M1002 set_gcode_claim_speed_level :5  ; Internal speed mode
+M221 X0 Y0 Z0                    ; Reset flow modifiers per axis
+G29.1 Z{-0.02}                   ; Z-offset BEST = -0.02mm - negative=closer to bed, positive=farther
+
+;===== Enable filament runout detection ====================
+M412 S1                          ; Enable runout sensor (S0=disable)
+M975 S1                          ; Enable resonance compensation (S0=disable)
+
+;===== Turn on fans to safe defaults =======================
+M106 P1 S125                     ; Part cooling fan 49% (0-255 scale)
+M106 P2 S50                      ; Aux fan 20% (0-255 scale)
+M106 P3 S125                     ; Chamber fan 49% (0-255 scale)
+M710 A1 S255                     ; MC board fan auto mode, max 100%
+
+;===== Begin heating quickly ===============================
+M1002 gcode_claim_action :2      ; Declare heating action
+M140 S[bed_temperature_initial_layer]  ; Start bed heating (non-blocking)
+M104 S[nozzle_temperature_initial_layer] ; Begin heating nozzle to final print temp (non-blocking)
+
+;===== Home all axes =======================================
+G28                              ; Home X, Y and Z
+
+;===== Prepare AMS (force reload) ==========================
+M1002 gcode_claim_action :4      ; Declare AMS action
+M620 M                           ; AMS: enter manual mode
+M620 S[initial_extruder]A        ; AMS: select extruder slot
+T[initial_extruder]              ; Activate tool
+M621 S[initial_extruder]A        ; AMS: confirm filament loaded
+M620.1 E F{filament_max_volumetric_speed[initial_extruder]/2.4053*60} T{nozzle_temperature_range_high[initial_extruder]}
+
+;===== Declare purge action ================================
+M1002 gcode_claim_action :14     ; Declare wipe/purge action
+M400                             ; Wait
+
+;===== Move to purge area quickly ==========================
+G1 X65 Y265 F9000                ; Move to purge position at 9000mm/min
+M109 S[nozzle_temperature_initial_layer]  ; Wait until nozzle reaches print temp
+M106 P1 S255                     ; Part fan to 100% for purging
+G92 E0                           ; Reset extruder position
+G1 E2 F150                       ; Extrude 2mm at 150mm/min (prime nozzle)
+G4 S1                            ; Dwell 1s
+
+;===== Minimal purge and retraction ========================
+G92 E0                           ; Reset extruder
+G1 E8 F300                       ; Extrude 8mm to clear nozzle
+G4 S2                            ; Dwell 2s
+M400                             ; Wait
+G92 E0                           ; Reset extruder
+G1 E-3 F300                      ; Retract 3mm to relieve pressure
+M400                             ; Wait
+
+;===== Quick wipe sequence =================================
+G1 X70 F9000                     ; Wipe to X70
+G1 X95 F12000                    ; Wipe to X95
+G1 X70 F9000                     ; Back to X70
+G1 X95 F12000                    ; Another quick wipe
+G1 X70 F9000                     ; Back
+M400                             ; Wait for wipes to finish
+G1 E-5 F200                      ; Retract 5mm
+G1 X88 F8000                     ; Move to X88
+G1 X89 F1000                     ; Precise positioning
+G4 S2                            ; Dwell 2 seconds
+
+;===== Lower fan to normal and finish purge ================
+M106 P1 S150                     ; Reduce part fan to ~59%
+
+;===== Reset purge action ==================================
+M1002 gcode_claim_action :0      ; Clear purge action
+
+;===== Bed levelling  ======================================
+G29.2 S1                         ; Enable bed leveling compensation
+
+;===== Move to front and prime for print ===================
+M109 S[nozzle_temperature_initial_layer]  ; Wait until print temperature (blocking)
+G1 Z4 F1200                      ; Lift Z to 4mm
+G1 X150 Y20 F9000                ; Move near front of bed at high speed
+G92 E0                           ; Reset extruder
+G1 E4 F200                       ; Prime 4mm
+G1 E-0.5 F120                    ; Retract 0.5mm to prevent oozing
+M400                             ; Ensure prime completed
+
+;===== Final state =========================================
+M106 P1 S150                     ; Part fan to ~59%
+M400                             ; Wait
+M975 S1                          ; Keep resonance compensation enabled
+; END

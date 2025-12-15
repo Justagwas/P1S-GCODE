@@ -1,17 +1,15 @@
 ;===========================================================
-;===== XL-Start G-code for Bambu Lab P1S WITH AMS ==========
+;===== L-Start G-code for Bambu Lab P1S WITH AMS ===========
 ;===== Author: Justagwas ===================================
 ;===== Date: 2025-12-15 ====================================
 ;===========================================================
 
-; This start script is the "XL" profile for the Bambu Lab P1S.
-; It prioritizes maximum reliability and unattended print safety.
-; A strict adaptive bed leveling routine probes the actual first-layer
-; print area when required, ensuring the highest first-layer accuracy.
-; Purge volume, wiping actions, and thermal staging are extensive to
-; guarantee clean extrusion and stable flow before printing begins.
-; Full AMS verification and filament-aware tuning are performed to
-; minimize load failures and ensure consistent material handling.
+; This start script is the "L" profile for the Bambu Lab P1S.
+; It provides a balanced approach between startup speed and reliability.
+; Adaptive bed leveling is used to validate and, if necessary, re-probe
+; the bed level mesh, avoiding unnecessary full-bed probing when valid.
+; Purge volume, wiping actions, and thermal staging are reduced compared
+; to the XL profile while still ensuring consistent extrusion behavior.
 
 ;===== DEFAULTING ==========================================
 G90                              ; Absolute positioning mode
@@ -58,76 +56,61 @@ M620.1 E F{filament_max_volumetric_speed[initial_extruder]/2.4053*60} T{nozzle_t
 M1002 gcode_claim_action :14     ; Declare wipe/purge action
 
 ;===== Move to purge area ==================================
-G1 X65 Y265 F6000                ; Move to purge position at 6000mm/min
+G1 X65 Y265 F8000                ; Move to purge position at 8000mm/min
 M109 S[nozzle_temperature_initial_layer]  ; Wait for nozzle temp (blocking)
-
 M106 P1 S255                     ; Part fan to 100% for cooling purge
 G92 E0                           ; Reset extruder position to zero
 G1 E2 F100                       ; Extrude 2mm at 100mm/min (prime nozzle)
 G4 S1                            ; Dwell 1 second
 
-;===== Purge ===============================================
+;===== Purge (balanced) ====================================
 G92 E0                           ; Reset extruder
-G1 E30 F200                      ; Extrude 30mm to purge old filament
-M400                             ; Wait for purge to finish
-M104 S200                        ; Start cooling to 200C (non-blocking)
+G1 E20 F200                      ; Purge 20mm to clear old material
+M400                             ; Wait for purge
+M104 S160                        ; Begin cooling to 160C (non-blocking)
 G92 E0                           ; Reset extruder
-G1 E-1 F200                      ; Retract 1mm to relieve pressure
+G1 E6 F120                       ; Extrude 6mm at 120mm/min
 M400                             ; Wait
+G4 S2                            ; Dwell 2 seconds
 
-;===== Lower purge temperature =============================
-M104 S180                        ; Start cooling to 180C (non-blocking)
-G92 E0                           ; Reset extruder
-G1 E10 F100                      ; Extrude 10mm at 100m/min
-M400                             ; Wait
-
-;===== Wiping movements ====================================
-; Initial wipe pattern to remove residue
-G1 E-3 F200                      ; Retract 3mm
+;===== Wiping movements (reduced) ==========================
+; Perform a moderate wipe sequence to clean the nozzle
+G1 E-3 F200                      ; Retract
 G1 X70 F9000                     ; Wipe to X70
 G1 X95 F12000                    ; Wipe to X95
 G1 X70 F9000                     ; Back to X70
-G1 X165 F12000                   ; Long wipe to X165 (off to right)
+G1 X165 F12000                   ; Long wipe to X165
 G1 X70 F9000                     ; Back to X70
-G1 X95 F12000                    ; Wipe to X95
-G1 X70 F9000                     ; Back to X70
-G1 E-2 F200                      ; Retract 2mm
-G1 X70 F9000                     ; Wipe to X70
-G1 X95 F12000                    ; Wipe to X95
+G1 X95 F12000                    ; Wipe again
 G1 X70 F9000                     ; Back
-G1 X95 F12000                    ; Wipe to X95
-G1 X70 F9000                     ; Back
-G1 X95 F3000                     ; Slow wipe
-G1 X70 F9000                     ; Fast wipe back
-G1 E-3 F200                      ; Retract 3mm
-M400                             ; Wait for moves to complete
-M104 S160                        ; Temperature to 160C (non-blocking)
+G1 E-2 F200                      ; Second retract
+G1 X70 F9000
+G1 X95 F12000
+G1 X70 F9000
+G1 X95 F12000
+G1 X70 F9000
+G1 E-4 F200                      ; Third retract
+M400                             ; Wait for all wipes to finish
+
+;===== Cooldown ============================================
 G1 X88 F8000                     ; Move to X88
-G1 X89 F1000                     ; Precision positioning
-G1 X89.2 F100                    ; Further positioning
-M106 P1 S255                     ; Part fan to 100%
+G1 X89 F500                      ; Precise positioning
+G1 X89.2 F100                    ; Precise positioning
 G4 S4                            ; Dwell 4 seconds
-
-;===== Cool to <=180 before leveling =======================
 G1 E-1 F200                      ; Retract 1mm
-M109 S160                        ; Wait until 160C
-G1 X70 F9000                     ; Wipe
-G1 X95 F12000                    ; Wipe
-G1 X70 F9000                     ; Back
-G1 X95 F12000                    ; Wipe
-G1 X70 F9000                     ; Back
-G1 X140 F9000                    ; Park
-M104 S140                        ; Cool to 140C (non-blocking)
-M106 P1 S150                     ; Lower part fan to ~59%
+G1 X70 F9000                     ; Light wipe
+G1 X95 F12000                    ; Wipe back
+G1 X70 F9000
+G1 X95 F12000
+G1 X70 F9000
 
-;===== Reset action ========================================
+;===== Reset action and adaptive bed leveling =============
 M1002 gcode_claim_action :0      ; Clear action state
-
-;===== Adaptive bed leveling ===============================
 G1 X110 Y110 F6000               ; Move to centre of bed
 M400                             ; Wait
 M1002 judge_flag g29_before_print_flag
 M622 J1                          ; If bed leveling enabled then:
+    M106 P1 S150                 ; Reduce part fan to ~59%
     M1002 gcode_claim_action :1  ; Declare mesh action
     G29 A X{first_layer_print_min[0]} Y{first_layer_print_min[1]} I{first_layer_print_size[0]} J{first_layer_print_size[1]}
     M400                         ; Wait for probing to complete
@@ -136,39 +119,19 @@ M622 J1                          ; If bed leveling enabled then:
 M623                             ; End conditional
 G29.2 S1                         ; Enable bed leveling compensation
 
-;===== Move to leftmost bottom corner =====================
-M104 S[nozzle_temperature_initial_layer]  ; Start heating to print temp
-G1 Z10 F1200                     ; Lift Z to 10mm at 1200mm/min
-G1 X20 Y5 F8000                  ; Move to purge line start position
-
-;===== Wait for extrusion temp =============================
-M109 S[nozzle_temperature_initial_layer]  ; Wait for print temp (blocking)
-
-;===== Start extrusion purge line ==========================
-G92 E0                           ; Reset extruder position
-G1 E3 F200                       ; Prime 3mm
+;===== Prime and move to print start =======================
 G1 Z0.3 F1200                    ; Lower to 0.3mm height
-G1 X20 Y5 F3000                  ; Move to purge start
+G1 X200 Y5 F8000                 ; Move near front of bed
+M109 S[nozzle_temperature_initial_layer]  ; Wait until print temperature (blocking)
 G92 E0                           ; Reset extruder
-G1 E4 F200                       ; 4mm Purge
-G1 E5 F200                       ; Extrude 5mm to ensure flow
-
-;----- Slow purge ------------------------------------------
-G1 X60 Y5 E12 F600               ; 40mm slow purge, high extrusion
-
-;----- Normal purge ----------------------------------------
-G1 X220 Y5 E24 F1200             ; Remaining purge at normal speed
-
-;===== Circular purge wipe =================================
-G92 E0                           ; Reset extruder before wipe
-
+G1 E6 F200                       ; 6mm Purge
+G92 E0                           ; Reset extruder
+G1 X220 Y5 E3 F600               ; Purge
+G92 E0                           ; Reset extruder
 G3 X220 Y5 I-2 J0 E1.2 F900      ; CCW half-circle wipe
 G3 X220 Y5 I2 J0  E1.2 F900      ; CCW second half
-
-;===== End of purge line ===================================
-G1 X223 F3000                    ; Move slightly right
-G1 Z1 F3000                      ; Lift Z to 1mm
-G92 E0                           ; Reset extruder
+G1 E-0.5 F120                    ; Retract 0.5mm to prevent ooze
+M400                             ; Ensure commands complete
 
 ;===== Final state =========================================
 M106 P1 S150                     ; Part fan to ~59%

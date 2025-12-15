@@ -236,7 +236,7 @@ Stock (default) P1S Start and End G-code are provided at the **top of this READM
 
 To restore defaults:
 
-Copy them from this *README* at the [top](https://github.com/Justagwas/P1S-GCODE/blob/main/README.md#-stock-default-bambu-lab-p1s-g-code), OR —
+Copy them from this *README* at the [top](https://github.com/Justagwas/P1S-GCODE?tab=readme-ov-file#-stock-default-bambu-lab-p1s-g-code), OR —
 
 1. Open **OrcaSlicer** or **Bambu Studio**.
 2. Create a **new** P1S printer preset.

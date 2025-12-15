@@ -31,9 +31,21 @@ Made to give you a more controlled printing workflow tailored to your priorities
 _Last validated on P1S + AMS — 2025-11-24_  
 _Recommended slicer: [OrcaSlicer](https://github.com/SoftFever/OrcaSlicer)_
 
+### 📌 Stock (Default) Bambu Lab P1S G-code
+
+#### - [View stock Start G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/STOCK-START%20G-code) — [RAW](https://github.com/Justagwas/P1S-GCODE/raw/refs/heads/main/G-code/STOCK-START%20G-code)
+#### - [View stock End G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/STOCK-START%20G-code) — [RAW](https://github.com/Justagwas/P1S-GCODE/raw/refs/heads/main/G-code/STOCK-END%20G-code)
+
+*_Last checked — 2025-12-15_
+
+### ⭐ Enhanced Start & End Bambu Lab P1S G-code
+
+#### - [View Enhanced Start G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/README.md#-start-g-code)
+#### - [View Enhanced End G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/README.md#-end-g-code)
+
 ---
 
-## ⭐ Variant Overview
+## 🟩-🟦-🟧 Variant Overview
 
 Choose the G-code variant that aligns with your workflow:
 
@@ -212,18 +224,23 @@ Modify only incrementally and test carefully.
 
 These profiles may not be the best fit if:
 
-- You prefer the **default Bambu workflow** and do not want to alter machine behavior  .
+- You prefer the **default Bambu workflow** and do not want to alter machine behavior.
 - You want the **absolute fastest** startup and shutdown sequences without additional safeguards (S profile includes safeguards).
 
 ---
 
 ## ♻️ How to Restore Stock G-code
+Stock (default) P1S Start and End G-code are provided at the **top of this README** for convenience.
 
-1. Open **OrcaSlicer** or **Bambu Studio**.  
-2. Create a **new** P1S preset.  
-3. Go to **Machine G-code**.  
-4. Copy the default Start/End G-code.  
-5. Paste into your modified preset.  
+To restore defaults:
+
+Copy them from this *README* at the [top](https://github.com/Justagwas/P1S-GCODE/blob/main/README.md#-stock-default-bambu-lab-p1s-g-code), OR —
+
+1. Open **OrcaSlicer** or **Bambu Studio**.
+2. Create a **new** P1S printer preset.
+3. Go to **Machine G-code**.
+4. Copy the stock Start / End G-code from there.
+5. Paste them into your preset.
 6. Save.
 
 ---

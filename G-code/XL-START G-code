@@ -1,17 +1,18 @@
 ;===========================================================
 ;===== XL-Start G-code for Bambu Lab P1S WITH AMS ==========
 ;===== Author: Justagwas ===================================
-;===== Date: 2025-12-15 ====================================
+;===== Date: 2025-12-16 ====================================
 ;===========================================================
 
 ; This start script is the "XL" profile for the Bambu Lab P1S.
-; It prioritizes maximum reliability and unattended print safety.
-; A strict adaptive bed leveling routine probes the actual first-layer
-; print area when required, ensuring the highest first-layer accuracy.
-; Purge volume, wiping actions, and thermal staging are extensive to
-; guarantee clean extrusion and stable flow before printing begins.
-; Full AMS verification and filament-aware tuning are performed to
-; minimize load failures and ensure consistent material handling.
+; It homes the printer, enables runout and resonance compensation,
+; and sets default motor currents, feedrate and flow.
+; It heats the bed and nozzle, then performs AMS load and tuning.
+; The nozzle is primed, purged, and wiped with multiple wipe passes.
+; The printer then runs adaptive bed leveling on the first-layer area,
+; enables bed leveling compensation, and performs a purge line with a
+; slow purge segment followed by a normal purge and a circular wipe.
+; It finishes by lifting Z and leaving the printer ready to start printing.
 
 ;===== DEFAULTING ==========================================
 G90                              ; Absolute positioning mode

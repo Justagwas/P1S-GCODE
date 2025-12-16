@@ -1,18 +1,16 @@
 ;===========================================================
 ;===== S-Start G-code for Bambu Lab P1S WITH AMS ===========
 ;===== Author: Justagwas ===================================
-;===== Date: 2025-12-15 ====================================
+;===== Date: 2025-12-16 ====================================
 ;===========================================================
 
 ; This start script is the "S" profile for the Bambu Lab P1S.
-; It prioritizes fast start-up while retaining essential safety and
-; reliability features. Purge volume, wiping actions, and thermal
-; staging are minimized.
-; The last known bed mesh is reused directly (bed leveling compensation
-; enabled without validation or re-probing) to eliminate startup
-; overhead, and no purge line is drawn.
-; AMS verification is kept lightweight to ensure the correct filament
-; is loaded without adding unnecessary delay.
+; It enables runout and resonance compensation, and sets default motor currents,
+; feedrate, flow, and fan defaults.
+; It heats the bed and nozzle, homes the printer, then performs AMS load and tuning.
+; The nozzle is primed, purged briefly, retracted, and wiped with a short wipe sequence.
+; Bed leveling compensation is enabled using the last known mesh (no validation or probing).
+; It then primes near the front of the bed, retracts slightly, and leaves the printer ready to print.
 
 ;===== DEFAULTING ==========================================
 G90                              ; Absolute positioning mode

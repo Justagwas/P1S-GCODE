@@ -28,15 +28,16 @@
 Carefully tuned, optimized, and documented G-code for **Bambu Lab P1S** printers, with full **AMS** support.  
 Made to give you a more controlled printing workflow tailored to your priorities: **reliability**, **balance**, or **speed**.
 
-_Last validated on P1S + AMS — 2025-11-24_  
+_Last validated on P1S + AMS — 2025-12-16_  
 _Recommended slicer: [OrcaSlicer](https://github.com/SoftFever/OrcaSlicer)_
+_Note that you may need to Enable "Advanced Mode" in your Slicer to change Start and End G-code._
 
 ### 📌 Stock (Default) Bambu Lab P1S G-code
 
 #### - [View stock Start G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/STOCK-START%20G-code) — [RAW](https://github.com/Justagwas/P1S-GCODE/raw/refs/heads/main/G-code/STOCK-START%20G-code)
 #### - [View stock End G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/STOCK-START%20G-code) — [RAW](https://github.com/Justagwas/P1S-GCODE/raw/refs/heads/main/G-code/STOCK-END%20G-code)
 
-*_Last checked — 2025-12-15_
+_Last checked — 2025-12-15_
 
 ### ⭐ Enhanced Start & End Bambu Lab P1S G-code
 
@@ -71,7 +72,7 @@ Numbers (e.g., *24 wipes*) appear for measurable operations.
 
 | **Feature** | 🟩 **XL-Start G-code** 🟩 | 🟦 **L-Start G-code** 🟦 | 🟧 **S-Start G-code** 🟧 |
 |-------------|---------------------------------|------------------------------|------------------------------|
-| **Links** | <div align="center">[View XL Start G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/XL-START%20G-code)<br>[View Raw XL Start G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/XL-START%20G-code)</div> | <div align="center">[View L Start G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/L-START%20G-code)<br>[View Raw L Start G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/L-START%20G-code)</div> | <div align="center">[View S Start G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/S-START%20G-code)<br>[View Raw S Start G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/S-START%20G-code)</div> |
+| **Click to View File —** <br> **or View RAW Text —** | <div align="center">[XL Start G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/XL-START%20G-code)<br>[RAW XL Start G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/XL-START%20G-code)</div> | <div align="center">[L Start G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/L-START%20G-code)<br>[RAW L Start G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/L-START%20G-code)</div> | <div align="center">[S Start G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/S-START%20G-code)<br>[RAW S Start G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/S-START%20G-code)</div> |
 | **Runtime**<br><sub><em>Please note that runtimes can be<br>as short as ~2 minutes (L-profile)<br>if your bed mesh is valid.</em></sub> | ~5 minutes | ~4 minutes | ~2 minutes |
 | **Startup Speed** [(1)](#1-startup-speed) | ★ | ★★ | ★★★ |
 | **Startup Reliability** [(2)](#2-startup-reliability) | ★★★ | ★★★ | ★ |
@@ -91,7 +92,7 @@ Numbers (e.g., *24 wipes*) appear for measurable operations.
 
 | **Feature** | 🟩 **XL-End G-code** 🟩 | 🟦 **L-End G-code** 🟦 | 🟧 **S-End G-code** 🟧 |
 |-------------|-----------------------------|-----------------------------|-----------------------------|
-| **Links** | <div align="center">[View XL End G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/XL-END%20G-code)<br>[View Raw XL End G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/XL-END%20G-code)</div> | <div align="center">[View L End G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/L-END%20G-code)<br>[View Raw L End G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/L-END%20G-code)</div> | <div align="center">[View S End G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/S-END%20G-code)<br>[View Raw S End G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/S-END%20G-code)</div> |
+| **Click to View File —** <br> **or View RAW Text —** | <div align="center">[XL End G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/XL-END%20G-code)<br>[RAW XL End G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/XL-END%20G-code)</div> | <div align="center">[L End G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/L-END%20G-code)<br>[RAW L End G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/L-END%20G-code)</div> | <div align="center">[S End G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/S-END%20G-code)<br>[RAW S End G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/S-END%20G-code)</div> |
 | **Runtime** | TBA | TBA | TBA |
 | **Shutdown Speed** [(11)](#11-shutdown-speed) | ★ | ★★ | ★★★ |
 | **Unload Reliability** [(12)](#12-unload-reliability) | ★★★ High | ★★★ High | ★★ Medium |
@@ -248,6 +249,10 @@ Copy them from this *README* at the [top](https://github.com/Justagwas/P1S-GCODE
 ---
 
 ## 🤝 Contributing
+
+- Submit "Issues" for Suggestions
+
+or
 
 1. Fork the repository  
 2. Make improvements or variants  

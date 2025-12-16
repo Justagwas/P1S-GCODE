@@ -1,15 +1,17 @@
 ;===========================================================
 ;===== L-End G-code for Bambu Lab P1S WITH AMS =============
 ;===== Author: Justagwas ===================================
-;===== Date: 2025-12-15 ====================================
+;===== Date: 2025-12-16 ====================================
 ;===========================================================
 
 ; This end script is the "L" profile for the Bambu Lab P1S.
-; It balances shutdown speed with reliable filament handling and
-; nozzle cleanliness. A moderate purge and wipe routine is used,
-; followed by a simplified staged cooldown to reduce cycle time.
-; AMS unload is performed reliably, and the printer is safely parked
-; with motion and motor settings returned to idle-friendly values.
+; It retracts filament, performs a spiral lift, and moves to the purge area.
+; The nozzle is primed, purged, cooled to the unload range, and wiped with a moderate wipe sequence.
+; Filament is unloaded via the AMS, then the nozzle and bed heaters are turned off.
+; The nozzle is wiped with bed leveling disabled, then leveling is re-enabled.
+; Timelapse recording is stopped if it was enabled.
+; The bed is moved to a safe height, the toolhead is parked, and motion settings are reset.
+; Fans run a shortened ventilation/cooldown stage, then all fans are turned off and motor currents are reduced.
 
 ;===== Ensure motion buffer is clear =======================
 M400                          ; Wait for all moves to finish

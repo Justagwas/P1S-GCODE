@@ -1,15 +1,19 @@
 ;===========================================================
 ;===== L-Start G-code for Bambu Lab P1S WITH AMS ===========
 ;===== Author: Justagwas ===================================
-;===== Date: 2025-12-15 ====================================
+;===== Date: 2025-12-16 ====================================
 ;===========================================================
 
 ; This start script is the "L" profile for the Bambu Lab P1S.
-; It provides a balanced approach between startup speed and reliability.
-; Adaptive bed leveling is used to validate and, if necessary, re-probe
-; the bed level mesh, avoiding unnecessary full-bed probing when valid.
-; Purge volume, wiping actions, and thermal staging are reduced compared
-; to the XL profile while still ensuring consistent extrusion behavior.
+; It homes the printer, enables runout and resonance compensation,
+; and sets default motor currents, feedrate and flow.
+; It heats the bed and nozzle, then performs AMS load and tuning.
+; The nozzle is primed, purged, and wiped with a reduced wipe sequence,
+; followed by a short cooldown and light wipe.
+; The printer then conditionally runs adaptive bed leveling on the first-layer area,
+; saves the mesh, and enables bed leveling compensation.
+; It finishes by priming near the front of the bed and performing a circular wipe,
+; then retracts slightly to reduce oozing before printing begins.
 
 ;===== DEFAULTING ==========================================
 G90                              ; Absolute positioning mode

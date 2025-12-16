@@ -251,9 +251,9 @@ Copy them from this *README* at the [top](https://github.com/Justagwas/P1S-GCODE
 
 ## 🤝 Contributing
 
-- Submit "Issues" for Suggestions
+1. Submit "Issues" for Suggestions
 
-or
+OR
 
 1. Fork the repository  
 2. Make improvements or variants  

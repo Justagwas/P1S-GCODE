@@ -82,7 +82,6 @@ G1 X95 F12000
 ;===== Lower fan ===========================================
 G1 X88 F9000                  ; Move near wipe area
 G1 X89 F500                   ; Precise positioning
-G1 X89.2 F500                 ; Further positioning
 M106 P1 S150                  ; Lower part fan to ~59%
 G4 S2                         ; Dwell 2 seconds
 

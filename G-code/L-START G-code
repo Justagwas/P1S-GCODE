@@ -99,7 +99,6 @@ M400                             ; Wait for all wipes to finish
 ;===== Cooldown ============================================
 G1 X88 F8000                     ; Move to X88
 G1 X89 F500                      ; Precise positioning
-G1 X89.2 F100                    ; Precise positioning
 G4 S4                            ; Dwell 4 seconds
 G1 E-1 F200                      ; Retract 1mm
 G1 X70 F9000                     ; Light wipe

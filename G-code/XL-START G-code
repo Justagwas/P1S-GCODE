@@ -105,7 +105,6 @@ M400                             ; Wait for moves to complete
 M104 S160                        ; Temperature to 160C (non-blocking)
 G1 X88 F8000                     ; Move to X88
 G1 X89 F1000                     ; Precision positioning
-G1 X89.2 F100                    ; Further positioning
 M106 P1 S255                     ; Part fan to 100%
 G4 S4                            ; Dwell 4 seconds
 

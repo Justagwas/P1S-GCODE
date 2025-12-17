@@ -80,7 +80,6 @@ G4 S1                         ; Brief dwell
 ;===== Lower fan and dwell =================================
 G1 X88 F9000                  ; Move near wipe area
 G1 X89 F500                   ; Precise positioning
-G1 X89.2 F100                   ; Further positioning
 M106 P1 S150                  ; Lower part fan to ~59%
 G4 S1                         ; Short dwell
 

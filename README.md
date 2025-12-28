@@ -36,9 +36,20 @@ _Note that you may need to Enable "Advanced Mode" in your Slicer to change Start
 ### 📌 Stock (Default) Bambu Lab P1S G-code
 
 #### - [View stock Start G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/STOCK-START%20G-code) — [RAW](https://github.com/Justagwas/P1S-GCODE/raw/refs/heads/main/G-code/STOCK-START%20G-code)
-#### - [View stock End G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/STOCK-START%20G-code) — [RAW](https://github.com/Justagwas/P1S-GCODE/raw/refs/heads/main/G-code/STOCK-END%20G-code)
+#### - [View stock End G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/STOCK-END%20G-code) — [RAW](https://github.com/Justagwas/P1S-GCODE/raw/refs/heads/main/G-code/STOCK-END%20G-code)
 
-_Last checked — 2025-12-15_
+<details>
+<summary>SOURCES — Click to expand</summary>
+  
+- https://github.com/bambulab/BambuStudio/tree/master/resources/profiles/BBL/machine
+
+- https://github.com/bambulab/BambuStudio/blob/c49f7a49e8cda234185c387efca869892687105b/resources/profiles/BBL/machine/Bambu%20Lab%20P1S%200.4%20nozzle.json#L237
+
+- https://github.com/bambulab/BambuStudio/blob/c49f7a49e8cda234185c387efca869892687105b/resources/profiles/BBL/machine/Bambu%20Lab%20P1S%200.4%20nozzle.json#L238
+
+</details>
+
+_Last checked — 2025-12-28_
 
 ### ⭐ Enhanced Start & End Bambu Lab P1S G-code
 

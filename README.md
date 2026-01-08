@@ -95,8 +95,12 @@ Numbers (e.g., *24 wipes*) appear for measurable operations.
 | **Thermal Stabilization** [(7)](#7-thermal-stabilization) | ★★★ Strict | ★★ Light | ★ Minimal |
 | **Temperature Staging** [(8)](#8-temperature-staging) | ★★★ Multi-stage | ★★ Optimized | ★ Minimal |
 | **Wipe Count** [(9)](#9-wipe-count) | ★★★ 24 wipes | ★★ 16 wipes | ★ 8 wipes |
-| **Purge Line** [(10)](#10-purge-line) | Yes | Small | No |
+| **Purge Line** [(10)](#10-purge-line) | Yes | Yes | No |
 | **Best For** | Infrequent printing | Regular daily printing | Fast, high-turnover printing |
+
+> [!NOTE]
+> 🧩 **Optional Add-on:** Want slightly faster startup and less waste?  
+> Use **L-Start-LITE G-code** (same L profile, reduced startup purge — ~0.2g less than standard L).
 
 ---
 
@@ -257,6 +261,21 @@ Copy them from this *README* at the [top](https://github.com/Justagwas/P1S-GCODE
 4. Copy the stock Start / End G-code from there.
 5. Paste them into your preset.
 6. Save.
+
+---
+
+## 🧩 Optional Add-ons (START G-code)
+
+### 🟨 L-Start-LITE G-code — Reduced Startup Purge
+
+This optional Start G-code is based on the **L (Balanced)** variant, but with **reduced startup purge/prime**.
+
+- Saves: **~0.2g** purge compared to standard **L-START** and has a way smaller purge line.
+- Trade-off: higher chance of first-line/first-layer filament/color "bleed" after AMS swaps (e.g. dark → light)
+
+#### Files
+- 📄 [View L-START-LITE G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/L-START-LITE%20G-code)
+- 🧾 [RAW L-START-LITE G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/L-START-LITE%20G-code)
 
 ---
 

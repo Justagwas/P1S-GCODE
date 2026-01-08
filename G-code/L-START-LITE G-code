@@ -1,5 +1,5 @@
 ;===========================================================
-;===== L-Start G-code for Bambu Lab P1S WITH AMS ===========
+;===== L-Start-LITE G-code for Bambu Lab P1S WITH AMS ======
 ;===== Author: Justagwas ===================================
 ;===== Date: 2026-01-08 ====================================
 ;===========================================================
@@ -14,6 +14,8 @@
 ; saves the mesh, and enables bed leveling compensation.
 ; It finishes by priming near the front of the bed and performing a circular wipe,
 ; then retracts slightly to reduce oozing before printing begins.
+
+; THIS VARIANT OF THE "L" PROFILE PURGES LESS THAN STANDARD, BEWARE OF FILAMENT "BLEEDING", for more info check the documentation.
 
 ;===== DEFAULTING ==========================================
 G90                              ; Absolute positioning mode
@@ -69,12 +71,11 @@ G4 S1                            ; Dwell 1 second
 
 ;===== Purge (balanced) ====================================
 G92 E0                           ; Reset extruder
-G1 E24 F240                      ; Purge 24mm to clear old material
-M400                             ; Wait for purge
-G1 E6 F120                       ; Extrude 6mm at 120mm/min
+G1 E20 F200                      ; Purge 20mm to clear old material
 M400                             ; Wait for purge
 M104 S160                        ; Begin cooling to 160C (non-blocking)
 G92 E0                           ; Reset extruder
+G1 E6 F120                       ; Extrude 6mm at 120mm/min
 M400                             ; Wait
 G4 S2                            ; Dwell 2 seconds
 
@@ -124,14 +125,13 @@ M623                             ; End conditional
 G29.2 S1                         ; Enable bed leveling compensation
 
 ;===== Prime and move to print start =======================
-M104 S[nozzle_temperature_initial_layer]  ; Start heating to print temp
-G1 X20 Y5 F8000                  ; Move to purge line start position
 G1 Z0.3 F1200                    ; Lower to 0.3mm height
+G1 X200 Y5 F8000                 ; Move near front of bed
 M109 S[nozzle_temperature_initial_layer]  ; Wait until print temperature (blocking)
 G92 E0                           ; Reset extruder
-G1 E4 F160                       ; 4mm Purge
-G1 X60 Y5 E12 F600               ; 40mm slower purge, high extrusion
-G1 X220 Y5 E24 F1200             ; Remaining purge at normal speed
+G1 E6 F200                       ; 6mm Purge
+G92 E0                           ; Reset extruder
+G1 X220 Y5 E3 F600               ; Purge
 G92 E0                           ; Reset extruder
 G3 X220 Y5 I-2 J0 E1.2 F900      ; CCW half-circle wipe
 G3 X220 Y5 I2 J0  E1.2 F900      ; CCW second half

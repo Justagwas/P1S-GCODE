@@ -99,8 +99,8 @@ Numbers (e.g., *24 wipes*) appear for measurable operations.
 | **Best For** | Infrequent printing | Regular daily printing | Fast, high-turnover printing |
 
 > [!NOTE]
-> 🧩 **Optional Add-on:** Want slightly faster startup and less waste?  
-> Use **L-Start-LITE G-code** (same L profile, reduced startup purge — ~0.2g less than standard L).
+> 🧩 **[Optional Add-on](https://github.com/Justagwas/P1S-GCODE?tab=readme-ov-file#-optional-add-ons-start-g-code):** Want slightly faster startup and less waste?  
+> Use **[L-Start-LITE G-code](https://github.com/Justagwas/P1S-GCODE/?tab=readme-ov-file#-l-start-lite-g-code--reduced-startup-purge)** (same L-Start profile, reduced startup purge, ~0.2g less than standard L-Start).
 
 ---
 
@@ -274,8 +274,8 @@ This optional Start G-code is based on the **L (Balanced)** variant, but with **
 - Trade-off: higher chance of first-line/first-layer filament/color "bleed" after AMS swaps (e.g. dark → light)
 
 #### Files
-- 📄 [View L-START-LITE G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/L-START-LITE%20G-code)
-- 🧾 [RAW L-START-LITE G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/L-START-LITE%20G-code)
+- [View L-START-LITE G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/L-START-LITE%20G-code)
+- [RAW L-START-LITE G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/L-START-LITE%20G-code)
 
 ---
 

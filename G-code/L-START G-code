@@ -65,12 +65,12 @@ G1 X65 Y265 F8000                ; Move to purge position at 8000mm/min
 M109 S[nozzle_temperature_initial_layer]  ; Wait for nozzle temp (blocking)
 M106 P1 S255                     ; Part fan to 100% for cooling purge
 G92 E0                           ; Reset extruder position to zero
-G1 E2 F100                       ; Extrude 2mm at 100mm/min (prime nozzle)
+G1 E4 F240                       ; Extrude 4mm at 4 mm/s - 240mm/min (prime nozzle)
 G4 S1                            ; Dwell 1 second
 
 ;===== Purge (balanced) ====================================
 G92 E0                           ; Reset extruder
-G1 E30 F160                      ; Purge 30mm to clear old material
+G1 E36 F300                      ; Purge 36mm to clear old material
 M400                             ; Wait for purge
 M104 S160                        ; Begin cooling to 160C (non-blocking)
 G92 E0                           ; Reset extruder
@@ -79,33 +79,37 @@ G4 S2                            ; Dwell 2 seconds
 
 ;===== Wiping movements (reduced) ==========================
 ; Perform a moderate wipe sequence to clean the nozzle
-G1 E-3 F200                      ; Retract
+G1 E-3 F400                      ; Retract
+G4 S1                            ; Dwell 1 second
 G1 X70 F9000                     ; Wipe to X70
 G1 X95 F12000                    ; Wipe to X95
 G1 X70 F9000                     ; Back to X70
-G1 X165 F12000                   ; Long wipe to X165
+G1 X125 F12000                   ; Longer wipe to X125
 G1 X70 F9000                     ; Back to X70
 G1 X95 F12000                    ; Wipe again
 G1 X70 F9000                     ; Back
-G1 E-2 F200                      ; Second retract
+M400                             ; Ensure retract done
+G1 E-2 F1200                     ; Second retract
 G1 X70 F9000
 G1 X95 F12000
 G1 X70 F9000
 G1 X95 F12000
 G1 X70 F9000
-G1 E-4 F200                      ; Third retract
-M400                             ; Wait for all wipes to finish
+M400                             ; Ensure retract done
+G1 E-3 F800                      ; Third retract
+M400                             ; Wait for all moves to finish
 
 ;===== Cooldown ============================================
 G1 X88 F8000                     ; Move to X88
 G1 X89 F500                      ; Precise positioning
+M400                             ; Ensure retract done
 G4 S4                            ; Dwell 4 seconds
-G1 E-1 F200                      ; Retract 1mm
 G1 X70 F9000                     ; Light wipe
 G1 X95 F12000                    ; Wipe back
 G1 X70 F9000
 G1 X95 F12000
 G1 X70 F9000
+M400                             ; Ensure moves are done
 
 ;===== Reset action and adaptive bed leveling =============
 M1002 gcode_claim_action :0      ; Clear action state
@@ -124,13 +128,13 @@ G29.2 S1                         ; Enable bed leveling compensation
 
 ;===== Prime and move to print start =======================
 M104 S[nozzle_temperature_initial_layer]  ; Start heating to print temp
-G1 X20 Y5 F12000                 ; Move to purge line start position
+G1 X20 Y5 F10000                 ; Move to purge line start position
 G1 Z0.3 F1200                    ; Lower to 0.3mm height
 M109 S[nozzle_temperature_initial_layer]  ; Wait until print temperature (blocking)
 G92 E0                           ; Reset extruder
-G1 E10 F100                      ; 10mm (Filament) Purge
+G1 E8 F600                       ; 6mm (Filament) Purge
 G92 E0                           ; Reset extruder
-G1 X60 Y5 E12 F400               ; 40mm (Path) slower purge, high extrusion
+G1 X60 Y5 E12 F600               ; 40mm (Path) slower purge, high extrusion
 G1 X220 Y5 E24 F1200             ; Remaining purge at normal speed
 G92 E0                           ; Reset extruder
 G3 X220 Y5 I-2 J0 E1.2 F900      ; CCW half-circle wipe

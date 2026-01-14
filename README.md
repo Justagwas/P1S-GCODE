@@ -58,7 +58,7 @@ _Last checked — 2026-01-14_
 
 These custom G-codes use advanced adaptive bed leveling to intelligently validate and re-probe bed mesh only when needed.
 
-**[CLICK Here](#-preview)** to preview the L Profile.
+**[CLICK Here](#-preview)** to preview the L Profile **(VIDEO SHOWCASE)**.
 
 ---
 
@@ -114,7 +114,7 @@ Numbers (e.g., *24 wipes*) appear for measurable operations.
 | **Runtime** | TBA | TBA | TBA |
 | **Shutdown Speed** [(11)](#11-shutdown-speed) | ★ | ★★ | ★★★ |
 | **Unload Reliability** [(12)](#12-unload-reliability) | ★★★ High | ★★★ High | ★★ Medium |
-| **Post-Print Purge** [(13)](#13-post-print-purge) | ★★★ High | ★★ Medium | ★ Low |
+| **Post-Print Purge** [(13)](#13-post-print-purge) | ★★★ High | ★ Low | ★ Low |
 | **Nozzle Wipe After Print** [(14)](#14-nozzle-wipe-after-print) | Extended | Moderate | Minimal |
 | **Cooldown Staging** [(15)](#15-cooldown-staging) | Multi-stage | Balanced | None |
 | **AMS Unload Confidence** [(16)](#16-ams-unload-confidence) | High | High | Medium |
@@ -157,38 +157,38 @@ Bed mesh validation starts at 2:16.
 <br>
 
 #### (1) Startup Speed  
-Fastness of reaching print-ready state.  
+How quickly the printer reaches a print-ready state.
 **★ = Slowest**, **★★ = Balanced**, **★★★ = Fastest**
 
 #### (2) Startup Reliability  
-How thoroughly the printer validates readiness (AMS, temps, resets).  
+How thoroughly the printer validates AMS, temps, resets.  
 **★★★ = Highest reliability**
 
 #### (3) Initialization Depth  
-How completely machine state is reset (motors, offsets, flow).
+Extent to which the printer resets its internal state (motors, offsets, flow control).
 
 #### (4) AMS Verification  
-Strictness of filament slot and load verification.  
-**More stars = more predictable/reliable AMS behavior**
+How strictly filament presence and loading are checked.
+**More stars = more consistent AMS behavior**
 
 #### (5) Purge Volume  
-Amount of extruded material used to clear residue.  
+Amount of material extruded to clear residual filament. 
 **More stars = cleaner first layers**
 
-#### (6) Bed Mesh Strictness  
-How rigorously stored mesh is validated and applied.
+#### (6) Bed Mesh Validation  
+How rigorously the stored bed mesh is verified and applied.
 
 #### (7) Thermal Stabilization  
 How evenly the nozzle temperature stabilizes before printing.
 
 #### (8) Temperature Staging  
-Number of controlled temperature transitions before printing.
+Number of controlled temperature steps before printing starts.
 
 #### (9) Wipe Count  
-Directional wipes for nozzle cleaning (XL ≈ 24 passes).
+Number of nozzle wipe passes for cleaning (XL ≈ 24 passes).
 
 #### (10) Purge Line  
-Presence of a purge line before the first layer.
+Whether a purge line is printed before the first layer.
 
 </details>
 
@@ -199,21 +199,21 @@ Presence of a purge line before the first layer.
 <br>
 
 #### (11) Shutdown Speed  
-Speed of completing shutdown routines.  
+How quickly the printer completes post-print shutdown routines.
 **★ = Slowest**, **★★★ = Fastest**
 
 #### (12) Unload Reliability  
-Consistency and safety of AMS unloading logic.  
+Thoroughness and safety of the AMS filament unload process.
 **★★★ = Most thorough**
 
 #### (13) Post-Print Purge  
-Amount of purging after the print to remove remaining residue.
+Amount of filament purged after the print to clear residue.
 
 #### (14) Nozzle Wipe After Print  
 Intensity of wipe actions after the job finishes.
 
 #### (15) Cooldown Staging  
-Whether cooldown is staged (XL) or rapid (S).
+Whether cooling occurs gradually (XL) or rapidly (S).
 
 #### (16) AMS Unload Confidence  
 Reliability of returning filament to AMS slots.

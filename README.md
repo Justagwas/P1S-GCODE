@@ -58,6 +58,8 @@ _Last checked — 2026-01-14_
 
 These custom G-codes use advanced adaptive bed leveling to intelligently validate and re-probe bed mesh only when needed.
 
+**[CLICK Here](#-preview)** to preview the L Profile.
+
 ---
 
 ## 🟩-🟦-🟧 Variant Overview
@@ -117,6 +119,32 @@ Numbers (e.g., *24 wipes*) appear for measurable operations.
 | **Cooldown Staging** [(15)](#15-cooldown-staging) | Multi-stage | Balanced | None |
 | **AMS Unload Confidence** [(16)](#16-ams-unload-confidence) | High | High | Medium |
 | **Best For** | Long idle periods | Balanced routine use | Rapid printing |
+
+---
+
+## 🎥 Preview
+
+The following previews show the L Profile in action and the difference in printing when:
+
+- a **stored bed mesh is still valid**
+- a **stored bed mesh is invalid and requires re-probing**
+
+Both instances used the same L Profile (L-Start & L-End) G-code and printer state, with only the mesh condition changed.
+
+Bed mesh validation starts at 2:16.
+
+### ✅ Bed Mesh Valid — Fast Startup (Mesh is reused)
+
+<details>
+  <summary>CLICK HERE TO EXPAND AND VIEW VIDEO</summary>
+  <video src="https://github.com/user-attachments/assets/a84602ea-c883-44c7-9c1b-347b69e32dc9" controls muted style="max-width: 100%; height: auto;" ></video>
+</details>
+
+### ❌ Mesh Invalid — Slow Startup (Mesh is re-probed)
+<details>
+  <summary>CLICK HERE TO EXPAND AND VIEW VIDEO</summary>
+  <video src="https://github.com/user-attachments/assets/bcd201dd-4633-439a-b95c-567698b0d04d" controls muted style="max-width: 100%; height: auto;" ></video>
+</details>
 
 ---
 
@@ -215,39 +243,6 @@ Reliability of returning filament to AMS slots.
 
 ---
 
-## ⚙ Motion-Affecting Commands
-
-These scripts use commands such as `M17`, `M220`, and `M221` to manage motor currents and flow.  
-Incorrect changes can cause:
-
-- Lost steps  
-- Rough extrusion  
-- Clogging  
-- Overheating  
-
-The included scripts use **firmware-aligned conservative defaults**.  
-Modify only incrementally and test carefully.
-
----
-
-## 🔧 Device Compatibility
-
-- **P1S + AMS** — fully supported  
-- **P1S without AMS** — AMS commands are **automatically ignored**  
-- **X1C (no AMS)** — NOT Tested
-- **X1C + AMS** — NOT Tested
-
----
-
-## ⚠️ Who This Is *Not* For
-
-These profiles may not be the best fit if:
-
-- You prefer the **default Bambu workflow** and do not want to alter machine behavior.
-- You want the **absolute fastest** startup and shutdown sequences without additional safeguards (S profile includes safeguards).
-
----
-
 ## ♻️ How to Restore Stock G-code
 Stock (default) P1S Start and End G-code are provided at the **top of this README** for convenience.
 
@@ -276,6 +271,37 @@ This optional Start G-code is based on the **L (Balanced)** variant, but with **
 #### Files
 - [View L-START-LITE G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/L-START-LITE%20G-code)
 - [RAW L-START-LITE G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/L-START-LITE%20G-code)
+
+---
+
+## 🔧 Device Compatibility
+
+- **P1S + AMS** — fully supported  
+- **P1S without AMS** — AMS commands are **automatically ignored**  
+- **X1C (no AMS)** — NOT Tested
+- **X1C + AMS** — NOT Tested
+
+---
+
+## ⚙ Motion-Affecting Commands
+
+These scripts use commands such as `M17`, `M220`, and `M221` to manage motor currents and flow.  
+Incorrect changes can cause:
+
+- Lost steps  
+- Rough extrusion  
+- Clogging  
+- Overheating  
+
+The included scripts use **firmware-aligned conservative defaults**.  
+Modify only incrementally and test carefully.
+
+---
+
+## ⚠️ These profiles may not be for you if:
+
+- You prefer the **default Bambu workflow** and do not want to alter machine behavior.
+- You want the **absolute fastest** startup and shutdown sequences without additional safeguards (S profile includes safeguards).
 
 ---
 

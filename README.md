@@ -93,7 +93,7 @@ Numbers (e.g., *24 wipes*) appear for measurable operations.
 | **Initialization Depth** [(3)](#3-initialization-depth) | ★★★ | ★★ | ★ |
 | **AMS Verification** [(4)](#4-ams-verification) | ★★★ | ★★★ | ★★ |
 | **Purge Volume** [(5)](#5-purge-volume) | ★★★ High | ★★ Medium | ★ Low |
-| **Bed Mesh Strictness** [(6)](#6-bed-mesh-strictness) | ★★★ High | ★★★ High | ★ Low |
+| **Bed Mesh Strictness** [(6)](#6-bed-mesh-validation) | ★★★ High | ★★★ High | ★ Low |
 | **Thermal Stabilization** [(7)](#7-thermal-stabilization) | ★★★ Strict | ★★ Light | ★ Minimal |
 | **Temperature Staging** [(8)](#8-temperature-staging) | ★★★ Multi-stage | ★★ Optimized | ★ Minimal |
 | **Wipe Count** [(9)](#9-wipe-count) | ★★★ 24 wipes | ★★ 16 wipes | ★ 8 wipes |
@@ -136,13 +136,13 @@ Bed mesh validation starts at 2:16.
 ### ✅ Bed Mesh Valid — Fast Startup (Mesh is reused)
 
 <details>
-  <summary>CLICK HERE TO EXPAND AND VIEW VIDEO</summary>
+  <summary><strong>CLICK HERE TO EXPAND AND VIEW VIDEO</strong></summary>
   <video src="https://github.com/user-attachments/assets/a84602ea-c883-44c7-9c1b-347b69e32dc9" controls muted style="max-width: 100%; height: auto;" ></video>
 </details>
 
 ### ❌ Mesh Invalid — Slow Startup (Mesh is re-probed)
 <details>
-  <summary>CLICK HERE TO EXPAND AND VIEW VIDEO</summary>
+  <summary><strong>CLICK HERE TO EXPAND AND VIEW VIDEO</strong></summary>
   <video src="https://github.com/user-attachments/assets/bcd201dd-4633-439a-b95c-567698b0d04d" controls muted style="max-width: 100%; height: auto;" ></video>
 </details>
 
@@ -154,10 +154,9 @@ Bed mesh validation starts at 2:16.
 
 <details>
 <summary><strong>Expand START feature explanations</strong></summary>
-<br>
 
 #### (1) Startup Speed  
-How quickly the printer reaches a print-ready state.
+How quickly the printer reaches a print-ready state.  
 **★ = Slowest**, **★★ = Balanced**, **★★★ = Fastest**
 
 #### (2) Startup Reliability  
@@ -168,11 +167,11 @@ How thoroughly the printer validates AMS, temps, resets.
 Extent to which the printer resets its internal state (motors, offsets, flow control).
 
 #### (4) AMS Verification  
-How strictly filament presence and loading are checked.
+How strictly filament presence and loading are checked.  
 **More stars = more consistent AMS behavior**
 
 #### (5) Purge Volume  
-Amount of material extruded to clear residual filament. 
+Amount of material extruded to clear residual filament.  
 **More stars = cleaner first layers**
 
 #### (6) Bed Mesh Validation  
@@ -196,14 +195,13 @@ Whether a purge line is printed before the first layer.
 
 <details>
 <summary><strong>Expand END feature explanations</strong></summary>
-<br>
 
 #### (11) Shutdown Speed  
-How quickly the printer completes post-print shutdown routines.
+How quickly the printer completes post-print shutdown routines.  
 **★ = Slowest**, **★★★ = Fastest**
 
 #### (12) Unload Reliability  
-Thoroughness and safety of the AMS filament unload process.
+Thoroughness and safety of the AMS filament unload process.  
 **★★★ = Most thorough**
 
 #### (13) Post-Print Purge  

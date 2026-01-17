@@ -56,9 +56,9 @@ _Last checked — 2026-01-14_
 #### - [View Enhanced Start G-code](https://github.com/Justagwas/P1S-GCODE?tab=readme-ov-file#-start-g-code)
 #### - [View Enhanced End G-code](https://github.com/Justagwas/P1S-GCODE?tab=readme-ov-file#-end-g-code)
 
-These custom G-codes use advanced adaptive bed leveling to intelligently validate and re-probe bed mesh only when needed.
+These custom G-codes use adaptive bed leveling to check and re-probe the mesh only when necessary.
 
-**[CLICK Here](#-preview)** to preview the L Profile **(VIDEO SHOWCASE)**.
+#### 🎥 **[CLICK Here](#-preview)** to preview the L Profile **(VIDEO SHOWCASE)**.
 
 ---
 
@@ -101,8 +101,7 @@ Numbers (e.g., *24 wipes*) appear for measurable operations.
 | **Best For** | Infrequent printing | Regular daily printing | Fast, high-turnover printing |
 
 > [!NOTE]
-> 🧩 **[Optional Add-on](https://github.com/Justagwas/P1S-GCODE?tab=readme-ov-file#-optional-add-ons-start-g-code):** Want slightly faster startup and less waste?  
-> Use **[L-Start-LITE G-code](https://github.com/Justagwas/P1S-GCODE/?tab=readme-ov-file#-l-start-lite-g-code--reduced-startup-purge)** (same L-Start profile, reduced startup purge, ~0.2g less than standard L-Start).
+> Want more options? Check out **[Optional Add-ons](#-optional-add-ons-g-codes)**.
 
 ---
 
@@ -257,18 +256,24 @@ Copy them from this *README* at the [top](https://github.com/Justagwas/P1S-GCODE
 
 ---
 
-## 🧩 Optional Add-ons (START G-code)
+## 🧩 Optional Add-ons (G-codes)
+
+<details>
+<summary><strong>CLICK Here to expand</strong></summary>
+
 
 ### 🟨 L-Start-LITE G-code — Reduced Startup Purge
 
 This optional Start G-code is based on the **L (Balanced)** variant, but with **reduced startup purge/prime**.
 
-- Saves: **~0.2g** purge compared to standard **L-START** and has a way smaller purge line.
+- Saves: **~0.2g** purge compared to standard **L-START** and has a smaller purge line.
 - Trade-off: higher chance of first-line/first-layer filament/color "bleed" after AMS swaps (e.g. dark → light)
 
 #### Files
 - [View L-START-LITE G-code](https://github.com/Justagwas/P1S-GCODE/blob/main/G-code/L-START-LITE%20G-code)
 - [RAW L-START-LITE G-code](https://github.com/Justagwas/P1S-GCODE/raw/main/G-code/L-START-LITE%20G-code)
+
+</details>
 
 ---
 

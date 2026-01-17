@@ -323,4 +323,4 @@ OR
 
 ## 📬 Contact
 
-**contact@justagwas.com**
+**email@justagwas.com**

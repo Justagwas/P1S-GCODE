@@ -147,7 +147,7 @@ Bed mesh validation starts at 2:16.
 
 ---
 
-## 📘 FEATURE EXPLANATIONS
+## 📘 Feature Explanations
 
 ### START G-code Feature Explanations
 
@@ -219,7 +219,7 @@ Reliability of returning filament to AMS slots.
 
 ---
 
-# 🛠 Installation (OrcaSlicer & Bambu Studio)
+## 🛠 Installation (OrcaSlicer & Bambu Studio)
 
 ### For **OrcaSlicer**
 1. Select your **P1S** printer profile.  

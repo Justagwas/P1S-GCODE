@@ -280,9 +280,11 @@ This optional Start G-code is based on the **L (Balanced)** variant, but with **
 ## 🔧 Device Compatibility
 
 - **P1S + AMS** — fully supported  
-- **P1S without AMS** — AMS commands are **automatically ignored**  
-- **X1C (no AMS)** — NOT Tested
+- **P1S without AMS** — AMS commands are **automatically ignored**
+- **P1P + AMS** — NOT tested  
+- **P1P without AMS** — NOT tested
 - **X1C + AMS** — NOT Tested
+- **X1C without AMS** — NOT Tested
 
 ---
 

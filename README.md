@@ -145,6 +145,8 @@ Bed mesh validation starts at 2:16.
   <video src="https://github.com/user-attachments/assets/bcd201dd-4633-439a-b95c-567698b0d04d" controls muted style="max-width: 100%; height: auto;" ></video>
 </details>
 
+*IF "Playback failed due to network error" — Refresh the page.
+
 ---
 
 ## 📘 Feature Explanations

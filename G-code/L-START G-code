@@ -1,7 +1,7 @@
 ;===========================================================
 ;===== L-Start G-code for Bambu Lab P1S WITH AMS ===========
 ;===== Author: Justagwas ===================================
-;===== Date: 2026-01-08 ====================================
+;===== Date: 2026-01-24 ====================================
 ;===========================================================
 
 ; This start script is the "L" profile for the Bambu Lab P1S.
@@ -25,7 +25,8 @@ M221 S100                        ; Flow rate 100%
 M73.2 R1.0                       ; Reset print time calculation
 M1002 set_gcode_claim_speed_level :5  ; Internal speed mode
 M221 X0 Y0 Z0                    ; Reset flow modifiers per axis
-G29.1 Z{-0.02}                   ; Z-offset BEST = -0.02mm - negative=closer to bed, positive=farther
+; G29.1 Z{-0.02}                   ; Z-offset -0.02mm - negative=closer to bed, positive=farther
+; ^ Currently not in use because of ";"
 
 ;===== Enable filament runout detection ====================
 M412 S1                          ; Enable runout sensor (S0=disable)
@@ -35,7 +36,7 @@ M975 S1                          ; Enable resonance compensation (S0=disable)
 M106 P1 S125                     ; Part cooling fan 49% (0-255 scale)
 M106 P2 S50                      ; Aux fan 20% (0-255 scale)
 M106 P3 S125                     ; Chamber fan 49% (0-255 scale)
-M710 A1 S255                     ; MC board fan auto mode, max 100%
+M710 A1 S255                     ; Controller fan AUTO
 
 ;===== Preheat bed and nozzle ==============================
 M1002 gcode_claim_action :2      ; Declare heating action
@@ -132,7 +133,7 @@ G1 X20 Y5 F10000                 ; Move to purge line start position
 G1 Z0.3 F1200                    ; Lower to 0.3mm height
 M109 S[nozzle_temperature_initial_layer]  ; Wait until print temperature (blocking)
 G92 E0                           ; Reset extruder
-G1 E8 F600                       ; 6mm (Filament) Purge
+G1 E8 F600                       ; 8mm (Filament) Purge
 G92 E0                           ; Reset extruder
 G1 X60 Y5 E12 F600               ; 40mm (Path) slower purge, high extrusion
 G1 X220 Y5 E24 F1200             ; Remaining purge at normal speed
@@ -143,7 +144,8 @@ G1 E-0.5 F120                    ; Retract 0.5mm to prevent ooze
 M400                             ; Ensure commands complete
 
 ;===== Final state =========================================
-M106 P1 S150                     ; Part fan to ~59%
+; M106 P1 S0                       ; Part cooling fan OFF
+; M106 P2 S0                       ; Aux / chamber fan OFF
 M400                             ; Wait
 M975 S1                          ; Keep resonance compensation enabled
 ; END

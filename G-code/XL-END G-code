@@ -1,7 +1,7 @@
 ;===========================================================
 ;===== XL-End G-code for Bambu Lab P1S WITH AMS ============
 ;===== Author: Justagwas ===================================
-;===== Date: 2025-12-16 ====================================
+;===== Date: 2026-01-24 ====================================
 ;===========================================================
 
 ; This end script is the "XL" profile for the Bambu Lab P1S.
@@ -15,6 +15,7 @@
 
 ;===== Ensure motion buffer is clear =======================
 M400                          ; Wait for all moves to finish
+M83                              ; Relative extrusion mode
 
 ;===== Reset motor currents and acceleration ===============
 M17 X1.2 Y1.2 Z0.75           ; Restore default motor currents
@@ -32,7 +33,7 @@ G1 X-10 Y5 F3000
 G1 X5 Y-10 F3000
 G1 Z2 X5 Y5 F3000
 G90                           ; Back to absolute positioning
-G1 E-1.5 F100                 ; Retract 1.5mm further
+G1 E-1.5 F200                 ; Retract 1.5mm further
 
 ;===== Move to safe park position ==========================
 G1 X65 Y265 F12000            ; Move head to purge/park area
@@ -41,7 +42,7 @@ M400 S3                       ; Wait for moves to complete
 ;===== Fan to max ==========================================
 M106 P1 S255                  ; Part cooling fan full speed
 G92 E0                        ; Reset extruder
-G1 E2 F100                    ; Small 2mm prime
+G1 E2 F200                    ; Small 2mm prime
 G4 S6                         ; Dwell 6 seconds
 
 ;===== Purge ===============================================
@@ -90,7 +91,6 @@ G1 E-1 F200                   ; Retract 1mm
 M109 S180                     ; Wait until 180C
 G1 X70 F9000                  ; Wipe
 G1 X95 F12000                 ; Wipe
-G1 X70 F9000                  ; Back
 G1 X70 F9000                  ; Back
 G1 X95 F12000                 ; Wipe
 G1 X70 F9000                  ; Back

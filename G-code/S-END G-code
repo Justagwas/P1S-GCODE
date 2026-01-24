@@ -1,7 +1,7 @@
 ;===========================================================
 ;===== S-End G-code for Bambu Lab P1S WITH AMS =============
 ;===== Author: Justagwas ===================================
-;===== Date: 2025-12-16 ====================================
+;===== Date: 2026-01-24 ====================================
 ;===========================================================
 
 ; This end script is the "S" profile for the Bambu Lab P1S.
@@ -15,6 +15,7 @@
 
 ;===== Ensure motion buffer is clear =======================
 M400                          ; Wait for all moves to finish
+M83                              ; Relative extrusion mode
 
 ;===== Reset motor currents and acceleration ===============
 M17 X1.2 Y1.2 Z0.75           ; Restore default motor currents

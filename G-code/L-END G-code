@@ -1,7 +1,7 @@
 ;===========================================================
 ;===== L-End G-code for Bambu Lab P1S WITH AMS =============
 ;===== Author: Justagwas ===================================
-;===== Date: 2026-01-08 ====================================
+;===== Date: 2026-01-24 ====================================
 ;===========================================================
 
 ; This end script is the "L" profile for the Bambu Lab P1S.
@@ -15,6 +15,7 @@
 
 ;===== Ensure motion buffer is clear =======================
 M400                          ; Wait for all moves to finish
+M83                              ; Relative extrusion mode
 
 ;===== Reset motor currents and acceleration ===============
 M17 X1.2 Y1.2 Z0.75           ; Restore default motor currents
@@ -53,7 +54,7 @@ G1 E-2 F1200                  ; Retract 2mm
 G1 X70 F9000                  ; Wipe to X70
 G1 X95 F12000                 ; Wipe to X95
 G1 X70 F9000                  ; Back to X70
-G1 X160 F12000                ; Longer wipe to X125
+G1 X160 F12000                ; Longer wipe to X160
 G1 X70 F9000                  ; Back to X70
 G1 X95 F12000                 ; Wipe again
 G1 X70 F9000                  ; Back
@@ -151,7 +152,7 @@ M400 S10                      ; Run for 10s
 M106 P1 S0                    ; Part fan off
 M106 P2 S0                    ; Aux fan off
 M106 P3 S0                    ; Chamber fan off
-M710 S0                       ; MC board fan off
+; M710 S0                       ; MC board fan off
 
 ;===== Lower motor currents ================================
 M17 X0.8 Y0.8 Z0.5            ; Reduce holding current for idle

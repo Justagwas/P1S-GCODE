@@ -58,6 +58,9 @@ _Last checked — 2026-01-14_
 
 These custom G-codes use adaptive bed leveling to check and re-probe the mesh only when necessary.
 
+> [!WARNING]
+> **BED LEVELING** needs to be **ON** before printing.
+
 #### 🎥 **[CLICK Here](#-preview)** to preview the L Profile **(VIDEO SHOWCASE)**.
 
 ---
@@ -69,6 +72,9 @@ Choose the G-code variant that aligns with your workflow:
 - 🟩 **XL — Reliability & Cleanliness First**  
 - 🟦 **L — Balanced for Everyday Printing (Creator Used) (Recommended)**  
 - 🟧 **S — Performance / Speed-Oriented**
+
+> [!NOTE]
+> Want more options? Check out **[Optional Add-ons](#-optional-add-ons-g-codes)**.
 
 ## ⭐ Star Intensity Guide
 
@@ -99,9 +105,6 @@ Numbers (e.g., *24 wipes*) appear for measurable operations.
 | **Wipe Count** [(9)](#9-wipe-count) | ★★★ 24 wipes | ★★ 16 wipes | ★ 8 wipes |
 | **Purge Line** [(10)](#10-purge-line) | Yes | Yes | No |
 | **Best For** | Infrequent printing | Regular daily printing | Fast, high-turnover printing |
-
-> [!NOTE]
-> Want more options? Check out **[Optional Add-ons](#-optional-add-ons-g-codes)**.
 
 ---
 

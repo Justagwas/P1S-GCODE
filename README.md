@@ -106,6 +106,11 @@ Numbers (e.g., *24 wipes*) appear for measurable operations.
 | **Purge Line** [(10)](#10-purge-line) | Yes | Yes | No |
 | **Best For** | Infrequent printing | Regular daily printing | Fast, high-turnover printing |
 
+> [!NOTE]
+> If your print is not sticking to the bed and you want to enable Z-offset control, delete the leading ";" (uncomment) the Z-offset line — most often line 28:  
+> `; G29.1 Z{-0.02}    ; Z-offset -0.02mm (negative = closer to bed, positive = farther)`  
+> Adjust the value as needed to fine-tune bed adhesion.
+
 ---
 
 # 📌 END G-code

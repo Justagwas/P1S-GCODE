@@ -49,7 +49,7 @@ _Note that you may need to Enable "Advanced Mode" in your Slicer to change Start
 
 </details>
 
-_Last checked — 2026-02-06_
+_Last checked — 2026-03-21_
 
 ### ⭐ Enhanced Start & End Bambu Lab P1S G-code
 

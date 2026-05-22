@@ -1,7 +1,7 @@
 ;===========================================================
 ;===== S-End G-code for Bambu Lab P1S WITH AMS =============
 ;===== Author: Justagwas ===================================
-;===== Date: 2026-01-24 ====================================
+;===== Date: 2026-05-22 ====================================
 ;===========================================================
 
 ; This end script is the "S" profile for the Bambu Lab P1S.
@@ -30,6 +30,7 @@ G1 E-0.5 F300                 ; Retract 0.5mm to relieve pressure
 G91                           ; Relative positioning
 G1 Z1 F3000                   ; Lift Z by 1mm
 G90                           ; Back to absolute positioning
+G1 Z{max_layer_z + 2} F900    ; Clear tallest print before XY travel
 
 ;===== Move to park/purge area quickly =====================
 G1 X65 Y265 F12000            ; Move head to purge/park area
@@ -113,12 +114,10 @@ M400                          ; Final wait
 ;===== Lower the bed safely ================================
 M17 S                         ; Reset motors
 M17 Z0.4                      ; Lower Z holding current
-{if (max_layer_z + 80.0) < 250}
-G1 Z{max_layer_z + 80.0} F600 ; Lift Z 80mm if safe
-G1 Z{max_layer_z + 78.0}      ; Lower slightly
+{if (max_layer_z + 80.0) < 248}
+G1 Z{max_layer_z + 80.0} F600 ; Lower Z 80mm if safe
 {else}
-G1 Z249 F600                  ; Otherwise raise near max
-G1 Z247                       ; Lower slightly
+G1 Z248 F600                  ; Otherwise lower near max
 {endif}
 M400 P100                     ; Wait
 G90                           ; Absolute positioning

@@ -1,7 +1,7 @@
 ;===========================================================
 ;===== XL-End G-code for Bambu Lab P1S WITH AMS ============
 ;===== Author: Justagwas ===================================
-;===== Date: 2026-01-24 ====================================
+;===== Date: 2026-05-22 ====================================
 ;===========================================================
 
 ; This end script is the "XL" profile for the Bambu Lab P1S.
@@ -33,6 +33,7 @@ G1 X-10 Y5 F3000
 G1 X5 Y-10 F3000
 G1 Z2 X5 Y5 F3000
 G90                           ; Back to absolute positioning
+G1 Z{max_layer_z + 2} F900    ; Clear tallest print before XY travel
 G1 E-1.5 F200                 ; Retract 1.5mm further
 
 ;===== Move to safe park position ==========================
@@ -144,12 +145,10 @@ M400                          ; Final wait
 M17 S                         ; Reset motors
 M17 Z0.4                      ; Lower Z motor current
 
-{if (max_layer_z + 100.0) < 250}
-G1 Z{max_layer_z + 100.0} F600; Raise Z 100mm if safe
-G1 Z{max_layer_z + 98.0}      ; Lower slightly
+{if (max_layer_z + 100.0) < 248}
+G1 Z{max_layer_z + 100.0} F600; Lower Z 100mm if safe
 {else}
-G1 Z249 F600                  ; Otherwise raise near max
-G1 Z247                       ; Lower slightly
+G1 Z248 F600                  ; Otherwise lower near max
 {endif}
 M400 P100                     ; Wait
 G90                           ; Absolute positioning

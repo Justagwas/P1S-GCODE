@@ -28,8 +28,9 @@
 Carefully tuned, optimized, and documented G-code for **Bambu Lab P1S** printers, with full **AMS** support.  
 Made to give you a more controlled printing workflow tailored to your priorities: **reliability**, **balance**, or **speed**.
 
-_Last validated on P1S + AMS — 2026-05-22_  
+_Last validated on P1S + AMS — 2026-07-18_  
 _Recommended slicer: [OrcaSlicer](https://github.com/SoftFever/OrcaSlicer)_  
+_Full documentation: [P1S-GCODE Wiki](https://github.com/Justagwas/P1S-GCODE/wiki)_
 
 _Note that you may need to Enable "Advanced Mode" in your Slicer to change Start and End G-code._
 
@@ -49,7 +50,7 @@ _Note that you may need to Enable "Advanced Mode" in your Slicer to change Start
 
 </details>
 
-_Last checked — 2026-05-22_
+_Last checked — 2026-07-18_
 
 ### ⭐ Enhanced Start & End Bambu Lab P1S G-code
 
@@ -59,7 +60,7 @@ _Last checked — 2026-05-22_
 These custom G-codes use adaptive bed leveling to check and re-probe the mesh only when necessary.
 
 > [!WARNING]
-> **BED LEVELING** needs to be **ON** before printing.
+> **BED LEVELING** needs to be turned **ON** before printing.
 
 #### 🎥 **[CLICK Here](#-preview)** to preview the L Profile **(VIDEO SHOWCASE)**.
 
@@ -81,7 +82,7 @@ Choose the G-code variant that aligns with your workflow:
 Stars represent **feature intensity**, not quality:
 
 - **★★★** — Highest / most thorough  
-- **★★** — Balanced  
+- **★★** — Balanced / moderate
 - **★** — Minimal / fastest  
 
 Numbers (e.g., *24 wipes*) appear for measurable operations.
@@ -289,8 +290,8 @@ This optional Start G-code is based on the **L (Balanced)** variant, but with **
 
 ## 🔧 Device Compatibility
 
-- **P1S + AMS** — fully supported  
-- **P1S without AMS** — AMS commands are **automatically ignored**
+- **P1S + AMS** — Supported  
+- **P1S without AMS** — Supported, AMS commands are **automatically ignored**
 - **P1P + AMS** — NOT tested  
 - **P1P without AMS** — NOT tested
 - **X1C + AMS** — NOT Tested

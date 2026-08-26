@@ -1,0 +1,91 @@
+name: Unexpected printer behavior
+description: Report reproducible behavior that differs from the documented profile sequence.
+title: "[Bug]: "
+labels:
+  - bug
+assignees:
+  - Justagwas
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Stop using the custom profile if movement, heating, probing, extrusion, or filament handling appears unsafe. Restore the stock preset before further testing.
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Observed behavior
+      description: What did the printer do, and what did you expect from the documented sequence?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Include the point in the start or end sequence where the behavior occurs.
+    validations:
+      required: true
+  - type: input
+    id: firmware
+    attributes:
+      label: Printer and firmware
+      placeholder: Bambu Lab P1S, firmware version...
+    validations:
+      required: true
+  - type: input
+    id: slicer
+    attributes:
+      label: Slicer and version
+      placeholder: OrcaSlicer or Bambu Studio, version...
+    validations:
+      required: true
+  - type: dropdown
+    id: profile
+    attributes:
+      label: Profile
+      options:
+        - XL-START
+        - XL-END
+        - L-START
+        - L-END
+        - L-START-LITE
+        - S-START
+        - S-END
+        - Stock reference
+        - Modified profile
+    validations:
+      required: true
+  - type: dropdown
+    id: filament_system
+    attributes:
+      label: Filament configuration
+      options:
+        - AMS
+        - External spool
+        - Other or modified
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Print and hardware context
+      description: Include relevant modifications, build plate, filament, profile edits, and whether the same sliced model behaves normally with the stock preset.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Supporting material
+      description: Add the smallest relevant G-code excerpt, logs, photographs, or video. Remove identifiers and unrelated model data.
+    validations:
+      required: false
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Safety check
+      options:
+        - label: I stopped using the profile if the observed behavior appeared unsafe.
+          required: true
+        - label: I compared the behavior with an untouched stock preset where it was safe to do so.
+          required: true
+        - label: I removed identifiers, network information, and unrelated model data.
+          required: true

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: P1S-GCODE documentation
+    url: https://github.com/Justagwas/P1S-GCODE/wiki
+    about: Read the installation, compatibility, safety, recovery, and troubleshooting documentation.
+  - name: Private security report
+    url: mailto:email@justagwas.com
+    about: Report suspected vulnerabilities privately instead of opening a public issue.

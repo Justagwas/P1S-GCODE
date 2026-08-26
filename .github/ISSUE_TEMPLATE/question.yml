@@ -1,0 +1,28 @@
+name: Usage question
+description: Ask about installation, profile selection, behavior, recovery, or compatibility.
+title: "[Question]: "
+labels:
+  - question
+assignees:
+  - Justagwas
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What are you trying to accomplish with the printer or profile?
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Configuration
+      description: Include the printer, firmware, slicer, profile, AMS state, relevant modifications, and documentation already reviewed.
+    validations:
+      required: true

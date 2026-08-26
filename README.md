@@ -321,19 +321,29 @@ Modify only incrementally and test carefully.
 
 ---
 
-## 🤝 Contributing
+## Project resources
 
-1. Submit "Issues" for Suggestions
+- [Documentation](https://github.com/Justagwas/P1S-GCODE/wiki)
+- [Installation](https://github.com/Justagwas/P1S-GCODE/wiki/Installation)
+- [Troubleshooting](https://github.com/Justagwas/P1S-GCODE/wiki/Troubleshooting)
+- [Frequently asked questions](https://github.com/Justagwas/P1S-GCODE/wiki/FAQ)
 
-OR
+## Contributing
 
-1. Fork the repository  
-2. Make improvements or variants  
-3. Submit a PR  
-4. Include reproduction steps if reporting bugs
+Contributions are welcome.
 
----
+- Start with [`.github/CONTRIBUTING.md`](https://github.com/Justagwas/P1S-GCODE/blob/main/.github/CONTRIBUTING.md).
+- Follow the shared [Code of Conduct](https://github.com/Justagwas/.github/blob/main/CODE_OF_CONDUCT.md).
+- Use [Issues](https://github.com/Justagwas/P1S-GCODE/issues) for reproducible defects, compatibility findings, and profile proposals.
+- Include the printer, AMS state, firmware, slicer, selected profile, and reproduction steps.
 
-## 📬 Contact
+## Contact
 
-**email@justagwas.com**
+- Email: [email@justagwas.com](mailto:email@justagwas.com)
+- GitHub: <https://github.com/Justagwas>
+
+## License
+
+Licensed under the Apache License 2.0.
+
+See [`LICENSE`](https://github.com/Justagwas/P1S-GCODE/blob/main/LICENSE).

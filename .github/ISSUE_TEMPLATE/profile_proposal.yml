@@ -1,0 +1,63 @@
+name: Profile change proposal
+description: Propose a tested change to a supplied G-code profile or its documentation.
+title: "[Profile]: "
+labels:
+  - enhancement
+assignees:
+  - Justagwas
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Practical problem
+      description: What behavior or tradeoff should change, and for whom?
+    validations:
+      required: true
+  - type: dropdown
+    id: profile
+    attributes:
+      label: Affected profile
+      multiple: true
+      options:
+        - XL-START
+        - XL-END
+        - L-START
+        - L-END
+        - L-START-LITE
+        - S-START
+        - S-END
+        - Documentation only
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: Proposed behavior
+      description: Identify the affected commands and explain the intended result.
+    validations:
+      required: true
+  - type: textarea
+    id: tradeoffs
+    attributes:
+      label: Tradeoffs and recovery
+      description: Describe effects on time, material, motion, heating, probing, unloading, cleanup, compatibility, and restoration to stock behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: testing
+    attributes:
+      label: Testing performed
+      description: Include printer, firmware, slicer, AMS state, original behavior, revised behavior, and how the sequence was observed.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I tested this change on the supported hardware and configuration described above.
+          required: true
+        - label: I compared the result with the current profile and stock sequence.
+          required: true
+        - label: I documented known limitations and safety implications.
+          required: true

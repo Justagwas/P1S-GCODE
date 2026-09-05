@@ -28,7 +28,7 @@
 Carefully tuned, optimized, and documented G-code for **Bambu Lab P1S** printers, with full **AMS** support.  
 Made to give you a more controlled printing workflow tailored to your priorities: **reliability**, **balance**, or **speed**.
 
-_Last validated on P1S + AMS — 2026-07-18_  
+_Last validated on P1S + AMS — 2026-09-05_  
 _Recommended slicer: [OrcaSlicer](https://github.com/SoftFever/OrcaSlicer)_  
 _Full documentation: [P1S-GCODE Wiki](https://github.com/Justagwas/P1S-GCODE/wiki)_
 
@@ -50,7 +50,7 @@ _Note that you may need to Enable "Advanced Mode" in your Slicer to change Start
 
 </details>
 
-_Last checked — 2026-07-18_
+_Last checked — 2026-09-05_
 
 ### ⭐ Enhanced Start & End Bambu Lab P1S G-code
 
